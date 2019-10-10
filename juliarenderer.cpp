@@ -1,12 +1,19 @@
 #include "juliarenderer.h"
 #include <QImage>
 #include <cmath>
+#include "juliatime.h"
 
 JuliaRenderer::JuliaRenderer(){
 	camera.position.x = 0.0; // -1.0;
 	camera.position.y = 0.0;
 	camera.zoom = 200.0;
 	camera.rotation = 0.0; // M_PI * 2.0 * (1.0/8.0);
+}
+
+void JuliaRenderer::update(){
+	camera.zoom = sin(JuliaTime::sinceStart) * 50 + 200;
+	camera.rotation += JuliaTime::deltaTime;
+	camera.position.x = sin(JuliaTime::sinceStart) * 1.0;
 }
 
 void JuliaRenderer::render(QImage &image){

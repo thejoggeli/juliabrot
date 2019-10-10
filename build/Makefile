@@ -54,12 +54,14 @@ SOURCES       = ../main.cpp \
 		../mainwindow.cpp \
 		../juliarenderer.cpp \
 		../camera.cpp \
-		../vec2.cpp moc_mainwindow.cpp
+		../vec2.cpp \
+		../juliatime.cpp moc_mainwindow.cpp
 OBJECTS       = main.o \
 		mainwindow.o \
 		juliarenderer.o \
 		camera.o \
 		vec2.o \
+		juliatime.o \
 		moc_mainwindow.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf \
@@ -138,11 +140,13 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		../../Juliabrot.pro ../mainwindow.h \
 		../juliarenderer.h \
 		../camera.h \
-		../vec2.h ../main.cpp \
+		../vec2.h \
+		../juliatime.h ../main.cpp \
 		../mainwindow.cpp \
 		../juliarenderer.cpp \
 		../camera.cpp \
-		../vec2.cpp
+		../vec2.cpp \
+		../juliatime.cpp
 QMAKE_TARGET  = Juliabrot
 DESTDIR       = 
 TARGET        = Juliabrot
@@ -326,8 +330,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../mainwindow.h ../juliarenderer.h ../camera.h ../vec2.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../main.cpp ../mainwindow.cpp ../juliarenderer.cpp ../camera.cpp ../vec2.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../mainwindow.h ../juliarenderer.h ../camera.h ../vec2.h ../juliatime.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../main.cpp ../mainwindow.cpp ../juliarenderer.cpp ../camera.cpp ../vec2.cpp ../juliatime.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../mainwindow.ui $(DISTDIR)/
 
 
@@ -390,7 +394,8 @@ compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_ui
 main.o: ../main.cpp ../mainwindow.h \
 		../juliarenderer.h \
 		../camera.h \
-		../vec2.h
+		../vec2.h \
+		../juliatime.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../main.cpp
 
 mainwindow.o: ../mainwindow.cpp ../mainwindow.h \
@@ -408,6 +413,9 @@ camera.o: ../camera.cpp ../camera.h \
 
 vec2.o: ../vec2.cpp ../vec2.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o vec2.o ../vec2.cpp
+
+juliatime.o: ../juliatime.cpp ../juliatime.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o juliatime.o ../juliatime.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp

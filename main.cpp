@@ -2,6 +2,10 @@
 #include <QApplication>
 #include <QLabel>
 #include "juliarenderer.h"
+#include "juliatime.h"
+#include <iostream>
+
+using namespace std;
 
 int main(int argc, char *argv[]){
 
@@ -13,15 +17,21 @@ int main(int argc, char *argv[]){
 	QImage* image = new QImage(720, 480, QImage::Format_ARGB32);
 
 	JuliaRenderer julia = JuliaRenderer();
-	julia.render(*image);
-
 	QLabel* label = new QLabel(window);
-	label->setPixmap(QPixmap::fromImage(*image));
-	label->show();
-
-
 
 	window->setCentralWidget(label);
+
+	JuliaTime::start();
+
+	while(true){
+		a.processEvents();
+		JuliaTime::update();
+		julia.update();
+		julia.render(*image);
+		label->setPixmap(QPixmap::fromImage(*image));
+		label->show();
+		cout << 1.0/JuliaTime::deltaTime << endl;
+	}
 
 	if(!a.exec()){
 		return EXIT_FAILURE;

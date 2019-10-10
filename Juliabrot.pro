@@ -29,13 +29,15 @@ SOURCES += \
         mainwindow.cpp \
     juliarenderer.cpp \
     camera.cpp \
-    vec2.cpp
+    vec2.cpp \
+    juliatime.cpp
 
 HEADERS += \
         mainwindow.h \
     juliarenderer.h \
     camera.h \
-    vec2.h
+    vec2.h \
+    juliatime.h
 
 FORMS += \
         mainwindow.ui

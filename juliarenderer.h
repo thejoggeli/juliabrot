@@ -10,6 +10,7 @@ private:
 	Camera camera;
 public:
 	JuliaRenderer();
+	void update();
 	void render(QImage& image);
 };
 
