@@ -1,3 +1,5 @@
+// Merge Programm: sudo apt install kdiff3
+
 #include <QApplication>
 #include <QLabel>
 #include <iostream>

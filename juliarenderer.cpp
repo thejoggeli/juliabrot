@@ -8,7 +8,7 @@ using namespace std;
 
 JuliaRenderer::JuliaRenderer()
 {
-  for (int i = 0; i < sizeof(keys) / sizeof(bool); i++)
+  for (u_int i = 0; i <= sizeof(keys) / sizeof(bool); i++)
   {
     keys[i] = false;
   }
@@ -56,6 +56,7 @@ void JuliaRenderer::update()
   {
     vy = -1;
   }
+
   vx *= JuliaTime::deltaTime * 100;
   vy *= JuliaTime::deltaTime * 100;
 
@@ -89,6 +90,14 @@ bool JuliaRenderer::eventFilter(QObject* obj, QEvent* event)
     {
       keys[keyEvent->key()] = true;
       cout << keyEvent->key() << "pressed" << endl;
+    }
+    else if (keyEvent->key() == Qt::Key_Backspace && !keyEvent->isAutoRepeat())
+    {
+      cout << "return pressed" << endl;
+      camera.position.x = 0.0;  // -1.0;
+      camera.position.y = 0.0;
+      camera.zoom = 100.0;
+      camera.rotation = 0.0;  // M_PI * 2.0 * (1.0/8.0);
     }
 
     return true;
@@ -126,8 +135,9 @@ void JuliaRenderer::render(QImage& image)
       coords.set(coords.x * ccos + coords.y * csin,
                  coords.x * csin - coords.y * ccos);
 
-      coords.set(coords.x / camera.zoom, coords.y / camera.zoom);  //
-                                                                   //      scale
+      coords.set(coords.x / camera.zoom,
+                 coords.y / camera.zoom);  //
+                                           //      scale
       coords.set(coords.x + camera.position.x,
                  coords.y + camera.position.y);  // move
 
