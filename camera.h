@@ -3,11 +3,12 @@
 
 #include "vec2.h"
 
-class Camera{
-public:
-	Vec2 position;
-	double zoom, rotation;
-	Camera();
+class Camera
+{
+ public:
+  Vec2 position;
+  double zoom, rotation;
+  Camera();
 };
 
-#endif // CAMERA_H
+#endif  // CAMERA_H
