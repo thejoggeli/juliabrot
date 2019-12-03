@@ -15,6 +15,7 @@ MainWindow::~MainWindow()
   delete ui;
 }
 
+// wird evtl. nicht benötigt
 void MainWindow::on_pushButton_clicked()
 {
   cout << ui->spinBox->value() << endl;
@@ -32,7 +33,6 @@ QLabel* MainWindow::getFPS()
 
 int MainWindow::getValue()
 {
-  //  int wert = ui->spinBox->value();
   return ui->spinBox->value();
 }
 
@@ -46,6 +46,8 @@ double MainWindow::getreel()
   return ui->doubleSpinBox_3->value();
 }
 
+// Modus Erkennung
+// Julia-set = index 0, Mandelbrot = index 1
 int MainWindow::getmode()
 {
   int startmodus = 0;
@@ -56,4 +58,22 @@ int MainWindow::getmode()
   {
     return changedmodus;
   }
+}
+
+void MainWindow::on_comboBox_currentIndexChanged(int index)
+{
+  if (index == 1)
+  {
+    ui->doubleSpinBox_2->setDisabled(true);
+    ui->doubleSpinBox_3->setDisabled(true);
+  }
+  else if (index == 0)
+  {
+    ui->doubleSpinBox_2->setDisabled(false);
+    ui->doubleSpinBox_3->setDisabled(false);
+  }
+}
+
+void MainWindow::on_doubleSpinBox_3_valueChanged(double arg1)
+{
 }

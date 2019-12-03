@@ -9,6 +9,7 @@ using namespace std;
 
 JuliaRenderer::JuliaRenderer()
 {
+  // Init Key Arrays
   for (u_int i = 0; i <= sizeof(keys) / sizeof(bool); i++)
   {
     keys[i] = false;
@@ -20,44 +21,38 @@ JuliaRenderer::JuliaRenderer()
 }
 
 void JuliaRenderer::update()
-{ /*
-   camera.zoom = sin(JuliaTime::sinceStart) * 50 + 200;  // origin Zoom
-   //  camera.zoom = sin(JuliaTime::sinceStart) * 1 + 200;  // no zoom
-
-   camera.rotation += JuliaTime::deltaTime;
-   //  camera.rotation = camera.rotation;  // no rotation
-
-   camera.position.x = sin(JuliaTime::sinceStart) * 1.0;
-   //  camera.position.x = camera.position.x;  // no move*/
-  // rotation move
+{
   double vx = 0, vy = 0;
+  double vcos, vsin;
 
-  if (keys[81])
+  // rotate
+  if (keys[81])  // Key Q
   {
     camera.rotation -= JuliaTime::deltaTime;
   }
-  else if (keys[69])
+  else if (keys[69])  // Key E
   {
     camera.rotation += JuliaTime::deltaTime;
   }
-  // move move
-  if (keys[68])
+  if (keys[68])  // Key D
   {
     vx = 1;
   }
-  else if (keys[65])
+  else if (keys[65])  // Key A
   {
     vx = -1;
   }
 
-  if (keys[83])
+  if (keys[83])  // Key S
   {
     vy = 1;
   }
-  else if (keys[87])
+  else if (keys[87])  // Key W
   {
     vy = -1;
   }
+
+  // Bewegungsanpassung sowie Geschwindigkeitsanpassung bei Zoom&Rotation
 
   vx *= JuliaTime::deltaTime * 100;
   vy *= JuliaTime::deltaTime * 100;
@@ -65,14 +60,13 @@ void JuliaRenderer::update()
   vx /= camera.zoom;
   vy /= camera.zoom;
 
-  double vcos, vsin;
-
   vcos = cos(camera.rotation);
   vsin = sin(camera.rotation);
 
+  // move
   camera.position.add(vcos * vx - vsin * vy, vsin * vx + vcos * vy);
 
-  // zoom move
+  // zoom
   if (keys[82])
   {
     camera.zoom += camera.zoom * JuliaTime::deltaTime * 0.95;
@@ -145,9 +139,7 @@ void JuliaRenderer::render(QImage& image, int maxIterations, int getmode,
 
       if (getmode == 0)
       {
-        //      Vec2 c = Vec2(coords.x, coords.y);  // Mandelbrot
         Vec2 c = Vec2(getcomplex, getreel);  // Julia-set
-
         Vec2 z = Vec2(coords.x, coords.y);
         Vec2 z_sqr = Vec2(0, 0);
         bool inside = 1;
@@ -173,8 +165,6 @@ void JuliaRenderer::render(QImage& image, int maxIterations, int getmode,
       else if (getmode == 1)
       {
         Vec2 c = Vec2(coords.x, coords.y);  // Mandelbrot
-        //        Vec2 c = Vec2(getcomplex, getreel);  // Julia-set
-
         Vec2 z = Vec2(coords.x, coords.y);
         Vec2 z_sqr = Vec2(0, 0);
         bool inside = 1;

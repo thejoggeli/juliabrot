@@ -30,6 +30,10 @@ class MainWindow : public QMainWindow
  private slots:
   void on_pushButton_clicked();
 
+  void on_comboBox_currentIndexChanged(int index);
+
+  void on_doubleSpinBox_3_valueChanged(double arg1);
+
  private:
   Ui::MainWindow* ui;
 };

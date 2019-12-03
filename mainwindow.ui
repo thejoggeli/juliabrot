@@ -32,7 +32,7 @@
      <rect>
       <x>760</x>
       <y>310</y>
-      <width>371</width>
+      <width>391</width>
       <height>241</height>
      </rect>
     </property>
@@ -47,7 +47,7 @@
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Ubuntu'; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;Controls&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;Controls&lt;/span&gt;	(Click on picture)&lt;/p&gt;
 &lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;[WSAD] 	  to move&lt;br /&gt;[QE] 	  	  to rotate&lt;br /&gt;[RF] 	 	  to Zoom&lt;br /&gt;[Backspace]   to reset &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
@@ -218,7 +218,7 @@ p, li { white-space: pre-wrap; }
       <x>1030</x>
       <y>270</y>
       <width>81</width>
-      <height>81</height>
+      <height>21</height>
      </rect>
     </property>
     <property name="text">
@@ -738,10 +738,23 @@ p, li { white-space: pre-wrap; }
      <bool>false</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(193, 125, 17);</string>
+     <string notr="true"/>
     </property>
     <property name="text">
      <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_9">
+    <property name="geometry">
+     <rect>
+      <x>510</x>
+      <y>20</y>
+      <width>56</width>
+      <height>34</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>FPS:</string>
     </property>
    </widget>
    <zorder>spinBox</zorder>
@@ -758,6 +771,7 @@ p, li { white-space: pre-wrap; }
    <zorder>pushButton</zorder>
    <zorder>label_7</zorder>
    <zorder>label_8</zorder>
+   <zorder>label_9</zorder>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
