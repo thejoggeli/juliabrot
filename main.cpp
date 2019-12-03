@@ -22,7 +22,7 @@ int main(int argc, char* argv[])
   QLabel* label = window->getRenderTarget();
   QImage* image =
       new QImage(label->width(), label->height(), QImage::Format_ARGB32);
-
+  QLabel* fps = window->getFPS();
   //  window->setCentralWidget(label);
 
   JuliaTime::start();
@@ -35,10 +35,13 @@ int main(int argc, char* argv[])
     JuliaTime::update();
     // tastenfunktion
     julia->update();
-    julia->render(*image);
+    julia->render(*image, window->getValue(), window->getmode(),
+                  window->getcomplex(), window->getreel());
     label->setPixmap(QPixmap::fromImage(*image));
     label->show();
-    //    cout << 1.0 / JuliaTime::deltaTime << endl;
+    fps->setNum(1.0 / JuliaTime::deltaTime);
+    fps->show();
+    //      cout << 1.0 / JuliaTime::deltaTime << endl;
   }
 
   if (!a.exec())

@@ -1,4 +1,5 @@
 #include "juliarenderer.h"
+#include <QDoubleSpinBox>
 #include <QImage>
 #include <cmath>
 #include <iostream>
@@ -30,6 +31,7 @@ void JuliaRenderer::update()
    //  camera.position.x = camera.position.x;  // no move*/
   // rotation move
   double vx = 0, vy = 0;
+
   if (keys[81])
   {
     camera.rotation -= JuliaTime::deltaTime;
@@ -120,11 +122,11 @@ bool JuliaRenderer::eventFilter(QObject* obj, QEvent* event)
   }
 }
 
-void JuliaRenderer::render(QImage& image)
+void JuliaRenderer::render(QImage& image, int maxIterations, int getmode,
+                           double getcomplex, double getreel)
 {
   double csin = sin(camera.rotation);
   double ccos = cos(camera.rotation);
-  int maxIterations = 20;
 
   for (int xi = 0; xi < image.width(); xi++)
   {
@@ -141,29 +143,59 @@ void JuliaRenderer::render(QImage& image)
       coords.set(coords.x + camera.position.x,
                  coords.y + camera.position.y);  // move
 
-      Vec2 c = Vec2(coords.x, coords.y);  // Mandelbrot
-
-      //      Vec2 c = Vec2(-0.8, 0.156);  // Julia-set
-      Vec2 z = Vec2(coords.x, coords.y);
-      Vec2 z_sqr = Vec2(0, 0);
-      bool inside = 1;
-      for (int i = 0; i < maxIterations; i++)
+      if (getmode == 0)
       {
-        z.set(z.x * z.x - z.y * z.y + c.x, z.x * z.y + z.y * z.x + c.y);
-        z_sqr.set(z.x * z.x, z.y * z.y);
-        if (z_sqr.x + z_sqr.y > 4.0)
+        //      Vec2 c = Vec2(coords.x, coords.y);  // Mandelbrot
+        Vec2 c = Vec2(getcomplex, getreel);  // Julia-set
+
+        Vec2 z = Vec2(coords.x, coords.y);
+        Vec2 z_sqr = Vec2(0, 0);
+        bool inside = 1;
+        for (int i = 0; i < maxIterations; i++)
         {
-          inside = 0;
-          break;
+          z.set(z.x * z.x - z.y * z.y + c.x, z.x * z.y + z.y * z.x + c.y);
+          z_sqr.set(z.x * z.x, z.y * z.y);
+          if (z_sqr.x + z_sqr.y > 4.0)
+          {
+            inside = 0;
+            break;
+          }
+        }
+        if (inside)
+        {
+          image.setPixel(xi, yi, 0xFF0000FFu);
+        }
+        else
+        {
+          image.setPixel(xi, yi, 0xFFFF00FFu);
         }
       }
-      if (inside)
+      else if (getmode == 1)
       {
-        image.setPixel(xi, yi, 0xFF0000FFu);
-      }
-      else
-      {
-        image.setPixel(xi, yi, 0xFFFF00FFu);
+        Vec2 c = Vec2(coords.x, coords.y);  // Mandelbrot
+        //        Vec2 c = Vec2(getcomplex, getreel);  // Julia-set
+
+        Vec2 z = Vec2(coords.x, coords.y);
+        Vec2 z_sqr = Vec2(0, 0);
+        bool inside = 1;
+        for (int i = 0; i < maxIterations; i++)
+        {
+          z.set(z.x * z.x - z.y * z.y + c.x, z.x * z.y + z.y * z.x + c.y);
+          z_sqr.set(z.x * z.x, z.y * z.y);
+          if (z_sqr.x + z_sqr.y > 4.0)
+          {
+            inside = 0;
+            break;
+          }
+        }
+        if (inside)
+        {
+          image.setPixel(xi, yi, 0xFF0000FFu);
+        }
+        else
+        {
+          image.setPixel(xi, yi, 0xFFFF00FFu);
+        }
       }
     }
   }

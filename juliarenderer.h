@@ -15,7 +15,8 @@ class JuliaRenderer : public QObject
  public:
   JuliaRenderer();
   void update();
-  void render(QImage& image);
+  void render(QImage& image, int maxIterations, int getmode, double getcomplex,
+              double getreel);
   bool eventFilter(QObject* Obj, QEvent* event) override;
 };
 

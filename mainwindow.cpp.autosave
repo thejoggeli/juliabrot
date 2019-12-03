@@ -15,6 +15,7 @@ MainWindow::~MainWindow()
   delete ui;
 }
 
+//wird evtl. nicht benötigt
 void MainWindow::on_pushButton_clicked()
 {
   cout << ui->spinBox->value() << endl;
