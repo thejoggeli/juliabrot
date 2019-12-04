@@ -30,14 +30,17 @@ void JuliaRenderer::update()
   {
     camera.rotation -= JuliaTime::deltaTime;
   }
+
   else if (keys[69])  // Key E
   {
     camera.rotation += JuliaTime::deltaTime;
   }
+
   if (keys[68])  // Key D
   {
     vx = 1;
   }
+
   else if (keys[65])  // Key A
   {
     vx = -1;
@@ -47,12 +50,13 @@ void JuliaRenderer::update()
   {
     vy = 1;
   }
+
   else if (keys[87])  // Key W
   {
     vy = -1;
   }
 
-  // Bewegungsanpassung sowie Geschwindigkeitsanpassung bei Zoom&Rotation
+  // Motion adjustment and speed adjustment in Zoom&Rotation
 
   vx *= JuliaTime::deltaTime * 100;
   vy *= JuliaTime::deltaTime * 100;
@@ -71,6 +75,7 @@ void JuliaRenderer::update()
   {
     camera.zoom += camera.zoom * JuliaTime::deltaTime * 0.95;
   }
+
   else if (keys[70])
   {
     camera.zoom -= camera.zoom * JuliaTime::deltaTime * 0.95;
@@ -131,9 +136,8 @@ void JuliaRenderer::render(QImage& image, int maxIterations, int getmode,
       coords.set(coords.x * ccos + coords.y * csin,
                  coords.x * csin - coords.y * ccos);
 
-      coords.set(coords.x / camera.zoom,
-                 coords.y / camera.zoom);  //
-                                           //      scale
+      coords.set(coords.x / camera.zoom, coords.y / camera.zoom);  //
+                                                                   //      scale
       coords.set(coords.x + camera.position.x,
                  coords.y + camera.position.y);  // move
 
