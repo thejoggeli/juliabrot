@@ -74,6 +74,7 @@ void MainWindow::on_comboBox_currentIndexChanged(int index)
   }
 }
 
-void MainWindow::on_doubleSpinBox_3_valueChanged(double arg1)
+/* void MainWindow::on_doubleSpinBox_3_valueChanged(double arg1)
 {
 }
+*/
