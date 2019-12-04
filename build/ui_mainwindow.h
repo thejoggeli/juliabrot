@@ -151,6 +151,7 @@ public:
         palette.setBrush(QPalette::Active, QPalette::ToolTipText, brush);
         QBrush brush11(QColor(0, 0, 0, 128));
 		brush11.setStyle(Qt::SolidPattern);
+
         palette.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette.setBrush(QPalette::Inactive, QPalette::Button, brush1);
         palette.setBrush(QPalette::Inactive, QPalette::Light, brush2);
@@ -244,7 +245,9 @@ public:
         comboBox_2->clear();
         comboBox_2->insertItems(0, QStringList()
          << QApplication::translate("MainWindow", "Escape Time #1", Q_NULLPTR)
+         << QApplication::translate("MainWindow", "Escape Time #2", Q_NULLPTR)
          << QApplication::translate("MainWindow", "Orbit Trap #1", Q_NULLPTR)
+         << QApplication::translate("MainWindow", "Orbit Trap #2", Q_NULLPTR)
         );
         pushButton->setText(QApplication::translate("MainWindow", "Plot", Q_NULLPTR));
         label_7->setText(QApplication::translate("MainWindow", "TextLabel", Q_NULLPTR));

@@ -16,6 +16,7 @@ JuliaRenderer::JuliaRenderer()
   {
     keys[i] = false;
   }
+
   camera.position.x = 0.0;  // -1.0;
   camera.position.y = 0.0;
   camera.zoom = 100.0;
@@ -32,14 +33,17 @@ void JuliaRenderer::update()
   {
     camera.rotation -= JuliaTime::deltaTime;
   }
+
   else if (keys[69])  // Key E
   {
     camera.rotation += JuliaTime::deltaTime;
   }
+
   if (keys[68])  // Key D
   {
     vx = 1;
   }
+
   else if (keys[65])  // Key A
   {
     vx = -1;
@@ -49,12 +53,13 @@ void JuliaRenderer::update()
   {
     vy = 1;
   }
+
   else if (keys[87])  // Key W
   {
     vy = -1;
   }
 
-  // Bewegungsanpassung sowie Geschwindigkeitsanpassung bei Zoom&Rotation
+  // Motion adjustment and speed adjustment in Zoom&Rotation
 
   vx *= JuliaTime::deltaTime * 100;
   vy *= JuliaTime::deltaTime * 100;
@@ -73,6 +78,7 @@ void JuliaRenderer::update()
   {
     camera.zoom += camera.zoom * JuliaTime::deltaTime * 0.95;
   }
+
   else if (keys[70])
   {
     camera.zoom -= camera.zoom * JuliaTime::deltaTime * 0.95;
@@ -84,11 +90,13 @@ bool JuliaRenderer::eventFilter(QObject* obj, QEvent* event)
   if (event->type() == QEvent::KeyPress)
   {
     QKeyEvent* keyEvent = static_cast<QKeyEvent*>(event);
+
     if (keyEvent->key() < 256 && !keyEvent->isAutoRepeat())
     {
       keys[keyEvent->key()] = true;
       cout << keyEvent->key() << "pressed" << endl;
     }
+
     else if (keyEvent->key() == Qt::Key_Backspace && !keyEvent->isAutoRepeat())
     {
       cout << "return pressed" << endl;
@@ -99,9 +107,11 @@ bool JuliaRenderer::eventFilter(QObject* obj, QEvent* event)
     }
     return true;
   }
+
   else if (event->type() == QEvent::KeyRelease)
   {
     QKeyEvent* keyEvent = static_cast<QKeyEvent*>(event);
+
     if (keyEvent->key() < 256 && !keyEvent->isAutoRepeat())
     {
       keys[keyEvent->key()] = false;
@@ -110,6 +120,7 @@ bool JuliaRenderer::eventFilter(QObject* obj, QEvent* event)
 
     return true;
   }
+
   else
   {
     // standard event processing
@@ -131,6 +142,26 @@ void JuliaRenderer::render(QImage& image)
   const int num_threads = x_step*y_step;
   std::thread threads[num_threads];
 
+  int color_algorithm = 0;
+  switch(color_mode){
+  case 0:
+	  color_algorithm = 0;
+	  descending_lightness = true;
+	  break;
+  case 1:
+	  color_algorithm = 0;
+	  descending_lightness = false;
+	  break;
+  case 2:
+	  color_algorithm = 1;
+	  descending_lightness = true;
+	  break;
+  case 3:
+	  color_algorithm = 1;
+	  descending_lightness = false;
+	  break;
+  }
+
   auto f = [&](int x_start, int y_start){
 	  for (int xi = x_start; xi < x_end; xi+=x_step)
 	  {
@@ -151,7 +182,7 @@ void JuliaRenderer::render(QImage& image)
 				c.set(coords.x, coords.y); // mandelbrot
 			}
 			unsigned int color;
-			switch(color_mode){
+			switch(color_algorithm){
 			case 0:
 				color = calcColorIter(coords, c);
 				break;
@@ -198,7 +229,13 @@ inline unsigned int JuliaRenderer::calcColorIter(const Vec2& coords, const Vec2&
 	float h = ((float)(iter))/((float)(max_iterations)) + JuliaTime::sinceStart * 0.025;
 	h = fmod(h, 1.0f);
 	float s = 1.0;
-	float l = 0.5;
+	float l;
+	if(descending_lightness){
+		const float dampening = 1.5;
+		l = 0.5-exp(-((float)(iter))/((float)(max_iterations))*dampening)*0.5;
+	} else {
+		l = 0.5;
+	}
 	ColorHsl hsl = ColorHsl(h, s, l);
 	return hsl.GetRgbUint32();
 }
@@ -228,7 +265,13 @@ inline unsigned int JuliaRenderer::calcColorOrbit(const Vec2& coords, const Vec2
 	double h = min_dist + JuliaTime::sinceStart * 0.025;
 	h = fmod(h, 1.0f);
 	float s = 1.0;
-	float l = 0.5;
+	float l;
+	if(descending_lightness){
+		const float dampening = 1.0;
+		l = max(0.5, min(1.0, (min_dist)*0.5));
+	} else {
+		l = 0.5;
+	}
 	ColorHsl hsl = ColorHsl(h, s, l);
 	return hsl.GetRgbUint32();
 }

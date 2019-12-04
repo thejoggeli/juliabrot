@@ -52,8 +52,12 @@ int MainWindow::getRenderingMode()
 {
   int startmodus = 0;
   int changedmodus = ui->comboBox->currentIndex();
+
   if (startmodus == changedmodus)
+  {
     return startmodus;
+  }
+
   else
   {
     return changedmodus;
@@ -79,6 +83,7 @@ void MainWindow::on_comboBox_currentIndexChanged(int index)
     ui->doubleSpinBox_2->setDisabled(true);
     ui->doubleSpinBox_3->setDisabled(true);
   }
+
   else if (index == 0)
   {
     ui->doubleSpinBox_2->setDisabled(false);
@@ -86,6 +91,7 @@ void MainWindow::on_comboBox_currentIndexChanged(int index)
   }
 }
 
-void MainWindow::on_doubleSpinBox_3_valueChanged(double arg1)
+/* void MainWindow::on_doubleSpinBox_3_valueChanged(double arg1)
 {
 }
+*/

@@ -208,7 +208,17 @@ p, li { white-space: pre-wrap; }
     </item>
     <item>
      <property name="text">
+      <string>Escape Time #2</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
       <string>Orbit Trap #1</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Orbit Trap #2</string>
      </property>
     </item>
    </widget>

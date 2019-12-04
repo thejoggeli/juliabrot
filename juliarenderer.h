@@ -19,6 +19,7 @@ class JuliaRenderer : public QObject
   int rendering_mode = 0;
   int max_iterations = 25;
   int color_mode = 1;
+  bool descending_lightness = false;
 
   JuliaRenderer();
   void update();
