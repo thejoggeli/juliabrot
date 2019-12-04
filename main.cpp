@@ -1,4 +1,5 @@
 // Merge Programm: sudo apt install kdiff3
+// philippe war hier
 
 // Include Tools
 #include <QApplication>
