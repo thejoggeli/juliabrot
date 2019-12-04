@@ -36,19 +36,19 @@ int MainWindow::getValue()
   return ui->spinBox->value();
 }
 
-double MainWindow::getcomplex()
+double MainWindow::getImaginary()
 {
   return ui->doubleSpinBox_2->value();
 }
 
-double MainWindow::getreel()
+double MainWindow::getReal()
 {
   return ui->doubleSpinBox_3->value();
 }
 
 // Modus Erkennung
 // Julia-set = index 0, Mandelbrot = index 1
-int MainWindow::getmode()
+int MainWindow::getRenderingMode()
 {
   int startmodus = 0;
   int changedmodus = ui->comboBox->currentIndex();
@@ -59,6 +59,18 @@ int MainWindow::getmode()
     return changedmodus;
   }
 }
+int MainWindow::getColorMode()
+{
+  int startmodus = 0;
+  int changedmodus = ui->comboBox_2->currentIndex();
+  if (startmodus == changedmodus)
+	return startmodus;
+  else
+  {
+	return changedmodus;
+  }
+}
+
 
 void MainWindow::on_comboBox_currentIndexChanged(int index)
 {

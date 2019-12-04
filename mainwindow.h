@@ -21,9 +21,10 @@ class MainWindow : public QMainWindow
   QLabel* getRenderTarget();
   QLabel* getFPS();
   int getValue();
-  double getcomplex();
-  double getreel();
-  int getmode();
+  double getImaginary();
+  double getReal();
+  int getRenderingMode();
+  int getColorMode();
 
   ~MainWindow();
 

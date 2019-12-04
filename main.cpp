@@ -34,24 +34,27 @@ int main(int argc, char* argv[])
 
   label->installEventFilter(julia);
 
-  while (true)
+  while (window->isVisible())
   {
     a.processEvents();
     JuliaTime::update();  // Timer update
     julia->update();      // Cameraposition update
-    julia->render(*image, window->getValue(), window->getmode(),
-                  window->getcomplex(),
-                  window->getreel());  //Übergabe diverser Parameter
-    label->setPixmap(QPixmap::fromImage(*image));
+	julia->julia_c.set(window->getReal(), window->getImaginary());
+	julia->rendering_mode = window->getRenderingMode();
+	julia->color_mode = window->getColorMode();
+	julia->max_iterations = window->getValue();
+	julia->render(*image);
+	QPixmap pixmap = QPixmap::fromImage(*image);
+	label->setPixmap(pixmap.scaled(label->width(), label->height(), Qt::KeepAspectRatio));
     label->show();
     fps->setNum(1.0 / JuliaTime::deltaTime);  // Frame per second
     fps->show();
   }
-
+/*
   if (!a.exec())
   {
     return EXIT_FAILURE;
-  }
+  } */
 
   return EXIT_SUCCESS;
 }

@@ -55,13 +55,17 @@ SOURCES       = ../main.cpp \
 		../juliarenderer.cpp \
 		../camera.cpp \
 		../vec2.cpp \
-		../juliatime.cpp moc_mainwindow.cpp
+		../juliatime.cpp \
+		../color.cpp \
+		../colorhsl.cpp moc_mainwindow.cpp
 OBJECTS       = main.o \
 		mainwindow.o \
 		juliarenderer.o \
 		camera.o \
 		vec2.o \
 		juliatime.o \
+		color.o \
+		colorhsl.o \
 		moc_mainwindow.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf \
@@ -141,12 +145,16 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		../juliarenderer.h \
 		../camera.h \
 		../vec2.h \
-		../juliatime.h ../main.cpp \
+		../juliatime.h \
+		../color.h \
+		../colorhsl.h ../main.cpp \
 		../mainwindow.cpp \
 		../juliarenderer.cpp \
 		../camera.cpp \
 		../vec2.cpp \
-		../juliatime.cpp
+		../juliatime.cpp \
+		../color.cpp \
+		../colorhsl.cpp
 QMAKE_TARGET  = Juliabrot
 DESTDIR       = 
 TARGET        = Juliabrot
@@ -330,8 +338,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../mainwindow.h ../juliarenderer.h ../camera.h ../vec2.h ../juliatime.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../main.cpp ../mainwindow.cpp ../juliarenderer.cpp ../camera.cpp ../vec2.cpp ../juliatime.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../mainwindow.h ../juliarenderer.h ../camera.h ../vec2.h ../juliatime.h ../color.h ../colorhsl.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../main.cpp ../mainwindow.cpp ../juliarenderer.cpp ../camera.cpp ../vec2.cpp ../juliatime.cpp ../color.cpp ../colorhsl.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../mainwindow.ui $(DISTDIR)/
 
 
@@ -391,11 +399,11 @@ compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_ui
 
 ####### Compile
 
-main.o: ../main.cpp ../mainwindow.h \
-		../juliarenderer.h \
+main.o: ../main.cpp ../juliarenderer.h \
 		../camera.h \
 		../vec2.h \
-		../juliatime.h
+		../juliatime.h \
+		../mainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../main.cpp
 
 mainwindow.o: ../mainwindow.cpp ../mainwindow.h \
@@ -404,7 +412,9 @@ mainwindow.o: ../mainwindow.cpp ../mainwindow.h \
 
 juliarenderer.o: ../juliarenderer.cpp ../juliarenderer.h \
 		../camera.h \
-		../vec2.h
+		../vec2.h \
+		../juliatime.h \
+		../colorhsl.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o juliarenderer.o ../juliarenderer.cpp
 
 camera.o: ../camera.cpp ../camera.h \
@@ -416,6 +426,13 @@ vec2.o: ../vec2.cpp ../vec2.h
 
 juliatime.o: ../juliatime.cpp ../juliatime.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o juliatime.o ../juliatime.cpp
+
+color.o: ../color.cpp ../color.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o color.o ../color.cpp
+
+colorhsl.o: ../colorhsl.cpp ../colorhsl.h \
+		../color.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o colorhsl.o ../colorhsl.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp
