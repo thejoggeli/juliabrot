@@ -13,6 +13,7 @@ void Vec2::set(double x, double y)
   this->x = x;
   this->y = y;
 }
+
 void Vec2::add(double x, double y)
 {
   this->x += x;

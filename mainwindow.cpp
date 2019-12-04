@@ -52,8 +52,12 @@ int MainWindow::getmode()
 {
   int startmodus = 0;
   int changedmodus = ui->comboBox->currentIndex();
+
   if (startmodus == changedmodus)
+  {
     return startmodus;
+  }
+
   else
   {
     return changedmodus;
@@ -67,6 +71,7 @@ void MainWindow::on_comboBox_currentIndexChanged(int index)
     ui->doubleSpinBox_2->setDisabled(true);
     ui->doubleSpinBox_3->setDisabled(true);
   }
+
   else if (index == 0)
   {
     ui->doubleSpinBox_2->setDisabled(false);

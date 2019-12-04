@@ -14,6 +14,7 @@ JuliaRenderer::JuliaRenderer()
   {
     keys[i] = false;
   }
+
   camera.position.x = 0.0;  // -1.0;
   camera.position.y = 0.0;
   camera.zoom = 100.0;
@@ -87,11 +88,13 @@ bool JuliaRenderer::eventFilter(QObject* obj, QEvent* event)
   if (event->type() == QEvent::KeyPress)
   {
     QKeyEvent* keyEvent = static_cast<QKeyEvent*>(event);
+
     if (keyEvent->key() < 256 && !keyEvent->isAutoRepeat())
     {
       keys[keyEvent->key()] = true;
       cout << keyEvent->key() << "pressed" << endl;
     }
+
     else if (keyEvent->key() == Qt::Key_Backspace && !keyEvent->isAutoRepeat())
     {
       cout << "return pressed" << endl;
@@ -103,9 +106,11 @@ bool JuliaRenderer::eventFilter(QObject* obj, QEvent* event)
 
     return true;
   }
+
   else if (event->type() == QEvent::KeyRelease)
   {
     QKeyEvent* keyEvent = static_cast<QKeyEvent*>(event);
+
     if (keyEvent->key() < 256 && !keyEvent->isAutoRepeat())
     {
       keys[keyEvent->key()] = false;
@@ -114,6 +119,7 @@ bool JuliaRenderer::eventFilter(QObject* obj, QEvent* event)
 
     return true;
   }
+
   else
   {
     // standard event processing
@@ -147,45 +153,54 @@ void JuliaRenderer::render(QImage& image, int maxIterations, int getmode,
         Vec2 z = Vec2(coords.x, coords.y);
         Vec2 z_sqr = Vec2(0, 0);
         bool inside = 1;
+
         for (int i = 0; i < maxIterations; i++)
         {
           z.set(z.x * z.x - z.y * z.y + c.x, z.x * z.y + z.y * z.x + c.y);
           z_sqr.set(z.x * z.x, z.y * z.y);
+
           if (z_sqr.x + z_sqr.y > 4.0)
           {
             inside = 0;
             break;
           }
         }
+
         if (inside)
         {
           image.setPixel(xi, yi, 0xFF0000FFu);
         }
+
         else
         {
           image.setPixel(xi, yi, 0xFFFF00FFu);
         }
       }
+
       else if (getmode == 1)
       {
         Vec2 c = Vec2(coords.x, coords.y);  // Mandelbrot
         Vec2 z = Vec2(coords.x, coords.y);
         Vec2 z_sqr = Vec2(0, 0);
         bool inside = 1;
+
         for (int i = 0; i < maxIterations; i++)
         {
           z.set(z.x * z.x - z.y * z.y + c.x, z.x * z.y + z.y * z.x + c.y);
           z_sqr.set(z.x * z.x, z.y * z.y);
+
           if (z_sqr.x + z_sqr.y > 4.0)
           {
             inside = 0;
             break;
           }
         }
+
         if (inside)
         {
           image.setPixel(xi, yi, 0xFF0000FFu);
         }
+
         else
         {
           image.setPixel(xi, yi, 0xFFFF00FFu);
