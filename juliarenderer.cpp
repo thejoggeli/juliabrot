@@ -133,8 +133,6 @@ void JuliaRenderer::render(QImage& image)
   double csin = sin(camera.rotation);
   double ccos = cos(camera.rotation);
 
-  Vec2 c = julia_c;
-
   const int x_step = 2;
   const int y_step = 2;
   const int x_end = image.width();
@@ -177,10 +175,7 @@ void JuliaRenderer::render(QImage& image)
 											   //      scale
 			coords.set(coords.x + camera.position.x,
 					 coords.y + camera.position.y);  // move
-
-			if(rendering_mode == 1){
-				c.set(coords.x, coords.y); // mandelbrot
-			}
+			Vec2 c = rendering_mode == 1 ? coords : julia_c;
 			unsigned int color;
 			switch(color_algorithm){
 			case 0:
