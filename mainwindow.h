@@ -27,6 +27,7 @@ class MainWindow : public QMainWindow
   double getReal();
   int getRenderingMode();
   int getColorMode();
+  void setStatusText(QString& text);
 
   ~MainWindow();
 

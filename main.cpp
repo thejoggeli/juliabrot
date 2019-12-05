@@ -39,23 +39,16 @@ int main(int argc, char* argv[])
     a.processEvents();
     JuliaTime::update();  // Timer update
     julia->update();      // Cameraposition update
-	julia->julia_c.set(window->getReal(), window->getImaginary());
-	julia->rendering_mode = window->getRenderingMode();
-	julia->color_mode = window->getColorMode();
-	julia->max_iterations = window->getValue();
-	julia->render(*image);
-	label->repaint();
-//	QPixmap pixmap = QPixmap::fromImage(*image);
-//	label->setPixmap(pixmap.scaled(label->width(), label->height(), Qt::KeepAspectRatioByExpanding));
- //   label->show();
-	//fps->setNum(1.0 / JuliaTime::deltaTime);  // Frame per second
-	//fps->show();
+    julia->julia_c.set(window->getReal(), window->getImaginary());
+    julia->rendering_mode = window->getRenderingMode();
+    julia->color_mode = window->getColorMode();
+    julia->max_iterations = window->getValue();
+    julia->render(*image);
+    label->repaint();
+    QString statustext = "FPS: ";
+    statustext += "FPS: ";
+    window->setStatusText(statustext);
   }
-/*
-  if (!a.exec())
-  {
-    return EXIT_FAILURE;
-  } */
 
   return EXIT_SUCCESS;
 }

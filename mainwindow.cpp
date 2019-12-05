@@ -5,7 +5,7 @@
 using namespace std;
 
 MainWindow::MainWindow(QWidget* parent)
-	: QMainWindow(parent), ui(new Ui::MainWindow)
+    : QMainWindow(parent), ui(new Ui::MainWindow)
 {
   ui->setupUi(this);
 }
@@ -57,27 +57,31 @@ int MainWindow::getColorMode()
   int startmodus = 0;
   int changedmodus = ui->comboBox_2->currentIndex();
   if (startmodus == changedmodus)
-	return startmodus;
+    return startmodus;
   else
   {
-	return changedmodus;
+    return changedmodus;
   }
 }
-
 
 void MainWindow::on_comboBox_currentIndexChanged(int index)
 {
   if (index == 1)
   {
     ui->doubleSpinBox_2->setDisabled(true);
-	ui->doubleSpinBox_3->setDisabled(true);
+    ui->doubleSpinBox_3->setDisabled(true);
   }
 
   else if (index == 0)
   {
     ui->doubleSpinBox_2->setDisabled(false);
-	ui->doubleSpinBox_3->setDisabled(false);
+    ui->doubleSpinBox_3->setDisabled(false);
   }
+}
+
+void MainWindow::setStatusText(QString& text)
+{
+  statusBar()->showMessage(text);
 }
 
 /* void MainWindow::on_doubleSpinBox_3_valueChanged(double arg1)
