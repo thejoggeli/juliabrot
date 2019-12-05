@@ -1,6 +1,8 @@
 // Merge Programm: sudo apt install kdiff3
 // philippe war hier
 
+// Basil war auch hier :)
+
 // Include Tools
 #include <QApplication>
 #include <QLabel>
