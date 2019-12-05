@@ -14,6 +14,9 @@ public:
 	static double deltaTime;
 	static void update();
 	static void start();
+	static int fps;
+	static int fpsCounter;
+	static int lastFpsTimeMs;
 };
 
 #endif // TIME_H
