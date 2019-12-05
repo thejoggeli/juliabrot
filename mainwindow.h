@@ -7,6 +7,8 @@
 #include <QPushButton>
 #include <QSpinBox>
 
+class JuliaWidget;
+
 namespace Ui
 {
 class MainWindow;
@@ -18,7 +20,7 @@ class MainWindow : public QMainWindow
 
  public:
   explicit MainWindow(QWidget* parent = nullptr);
-  QLabel* getRenderTarget();
+  JuliaWidget* getRenderTarget();
   QLabel* getFPS();
   int getValue();
   double getImaginary();
@@ -29,11 +31,8 @@ class MainWindow : public QMainWindow
   ~MainWindow();
 
  private slots:
-  void on_pushButton_clicked();
 
   void on_comboBox_currentIndexChanged(int index);
-
-  void on_doubleSpinBox_3_valueChanged(double arg1);
 
  private:
   Ui::MainWindow* ui;

@@ -231,8 +231,7 @@ inline unsigned int JuliaRenderer::calcColorIter(const Vec2& coords, const Vec2&
 	} else {
 		l = 0.5;
 	}
-	ColorHsl hsl = ColorHsl(h, s, l);
-	return hsl.GetRgbUint32();
+	return ColorHsl::GetRgbUint32(h,s,l);
 }
 
 inline unsigned int JuliaRenderer::calcColorOrbit(const Vec2& coords, const Vec2& c)
@@ -267,7 +266,6 @@ inline unsigned int JuliaRenderer::calcColorOrbit(const Vec2& coords, const Vec2
 	} else {
 		l = 0.5;
 	}
-	ColorHsl hsl = ColorHsl(h, s, l);
-	return hsl.GetRgbUint32();
+	return ColorHsl::GetRgbUint32(h, s, l);
 }
 
