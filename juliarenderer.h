@@ -10,11 +10,10 @@ class QImage;
 class JuliaRenderer : public QObject
 {
  private:
-  Camera camera;
   bool keys[256];
 
  public:
-
+  Camera camera;
   Vec2 julia_c = Vec2(0, 0);
   int rendering_mode = 0;
   int max_iterations = 25;
@@ -26,10 +25,9 @@ class JuliaRenderer : public QObject
   void render(QImage& image);
   bool eventFilter(QObject* Obj, QEvent* event) override;
 
-private:
+ private:
   unsigned int calcColorIter(const Vec2& coords, const Vec2& c);
   unsigned int calcColorOrbit(const Vec2& coords, const Vec2& c);
-
 };
 
 #endif  // JULIARENDERER_H

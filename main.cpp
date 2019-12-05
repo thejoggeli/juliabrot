@@ -2,6 +2,7 @@
 // philippe war hier
 
 // Include Tools
+#include <math.h>
 #include <QApplication>
 #include <QLabel>
 #include <iostream>
@@ -46,7 +47,22 @@ int main(int argc, char* argv[])
     julia->render(*image);
     label->repaint();
     QString statustext = "FPS: ";
-    statustext += "FPS: ";
+    statustext += QString::number(JuliaTime::fps);
+    statustext += " | X: ";
+    statustext += QString::number(julia->camera.position.x, 'G', 20);
+    statustext += " | Y: ";
+    statustext += QString::number(julia->camera.position.y, 'G', 20);
+    statustext += " | Zoom: ";
+    statustext += QString::number(julia->camera.zoom);
+    statustext += "x";
+    statustext += " | Winkel: ";
+    double angle = fmod((julia->camera.rotation / M_PI) * 180.0, 360.0);
+    if (angle < 0)
+    {
+      angle += 360;
+    }
+    statustext += QString::number(angle);
+    statustext += "°";
     window->setStatusText(statustext);
   }
 
