@@ -31,8 +31,8 @@ SOURCES += \
     camera.cpp \
     vec2.cpp \
     juliatime.cpp \
-    color.cpp \
-    colorhsl.cpp
+    colorhsl.cpp \
+    juliawidget.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -40,8 +40,8 @@ HEADERS += \
     camera.h \
     vec2.h \
     juliatime.h \
-    color.h \
-    colorhsl.h
+    colorhsl.h \
+    juliawidget.h
 
 FORMS += \
         mainwindow.ui

@@ -5,7 +5,7 @@
 using namespace std;
 
 MainWindow::MainWindow(QWidget* parent)
-    : QMainWindow(parent), ui(new Ui::MainWindow)
+	: QMainWindow(parent), ui(new Ui::MainWindow)
 {
   ui->setupUi(this);
 }
@@ -15,20 +15,9 @@ MainWindow::~MainWindow()
   delete ui;
 }
 
-// wird evtl. nicht benötigt
-void MainWindow::on_pushButton_clicked()
+JuliaWidget* MainWindow::getRenderTarget()
 {
-  cout << ui->spinBox->value() << endl;
-}
-
-QLabel* MainWindow::getRenderTarget()
-{
-  return ui->label_7;
-}
-
-QLabel* MainWindow::getFPS()
-{
-  return ui->label_8;
+  return ui->julia_widget;
 }
 
 int MainWindow::getValue()
@@ -81,13 +70,13 @@ void MainWindow::on_comboBox_currentIndexChanged(int index)
   if (index == 1)
   {
     ui->doubleSpinBox_2->setDisabled(true);
-    ui->doubleSpinBox_3->setDisabled(true);
+	ui->doubleSpinBox_3->setDisabled(true);
   }
 
   else if (index == 0)
   {
     ui->doubleSpinBox_2->setDisabled(false);
-    ui->doubleSpinBox_3->setDisabled(false);
+	ui->doubleSpinBox_3->setDisabled(false);
   }
 }
 
