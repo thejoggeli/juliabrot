@@ -33,8 +33,6 @@ class MainWindow : public QMainWindow
 
   void on_comboBox_currentIndexChanged(int index);
 
-  void on_doubleSpinBox_3_valueChanged(double arg1);
-
  private:
   Ui::MainWindow* ui;
 };
