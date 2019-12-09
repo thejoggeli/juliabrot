@@ -36,9 +36,15 @@ public:
 
 protected:
 
+	void savePng(int w, int h);
+
 private slots:
 	void on_comboBox_currentIndexChanged(int index);
-	void on_actionSave_PNG_triggered();
+	void on_actionSave_PNG_Custom_triggered();
+	void on_actionSave_PNG_1080_triggered();
+	void on_actionSave_PNG_2160_triggered();
+	void on_actionSave_PNG_4320_triggered();
+	void on_actionSave_PNG_8640_triggered();
 	void on_actionExit_triggered();
 
 private:

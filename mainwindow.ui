@@ -432,19 +432,47 @@ p, li { white-space: pre-wrap; }
     <property name="title">
      <string>File</string>
     </property>
-    <addaction name="actionSave_PNG"/>
+    <addaction name="actionSave_PNG_8640"/>
+    <addaction name="actionSave_PNG_4320"/>
+    <addaction name="actionSave_PNG_2160"/>
+    <addaction name="actionSave_PNG_1080"/>
+    <addaction name="actionSave_PNG_Custom"/>
+    <addaction name="separator"/>
     <addaction name="actionExit"/>
    </widget>
    <addaction name="menuFile"/>
   </widget>
-  <action name="actionSave_PNG">
-   <property name="text">
-    <string>Save PNG</string>
-   </property>
-  </action>
   <action name="actionExit">
    <property name="text">
     <string>Exit</string>
+   </property>
+  </action>
+  <action name="actionSave_PNG_2160">
+   <property name="text">
+    <string>Save PNG (2160p)</string>
+   </property>
+   <property name="toolTip">
+    <string>Save PNG (2160p)</string>
+   </property>
+  </action>
+  <action name="actionSave_PNG_1080">
+   <property name="text">
+    <string>Save PNG (1080p)</string>
+   </property>
+  </action>
+  <action name="actionSave_PNG_4320">
+   <property name="text">
+    <string>Save PNG (4320p)</string>
+   </property>
+  </action>
+  <action name="actionSave_PNG_Custom">
+   <property name="text">
+    <string>Save PNG (Custom)</string>
+   </property>
+  </action>
+  <action name="actionSave_PNG_8640">
+   <property name="text">
+    <string>Save PNG (8640p)</string>
    </property>
   </action>
  </widget>

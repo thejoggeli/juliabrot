@@ -34,8 +34,12 @@ QT_BEGIN_NAMESPACE
 class Ui_MainWindow
 {
 public:
-    QAction *actionSave_PNG;
     QAction *actionExit;
+    QAction *actionSave_PNG_2160;
+    QAction *actionSave_PNG_1080;
+    QAction *actionSave_PNG_4320;
+    QAction *actionSave_PNG_Custom;
+    QAction *actionSave_PNG_8640;
     QWidget *centralWidget;
     QVBoxLayout *verticalLayout;
     QHBoxLayout *horizontalLayout;
@@ -65,10 +69,18 @@ public:
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
         MainWindow->resize(1104, 870);
-        actionSave_PNG = new QAction(MainWindow);
-        actionSave_PNG->setObjectName(QStringLiteral("actionSave_PNG"));
         actionExit = new QAction(MainWindow);
         actionExit->setObjectName(QStringLiteral("actionExit"));
+        actionSave_PNG_2160 = new QAction(MainWindow);
+        actionSave_PNG_2160->setObjectName(QStringLiteral("actionSave_PNG_2160"));
+        actionSave_PNG_1080 = new QAction(MainWindow);
+        actionSave_PNG_1080->setObjectName(QStringLiteral("actionSave_PNG_1080"));
+        actionSave_PNG_4320 = new QAction(MainWindow);
+        actionSave_PNG_4320->setObjectName(QStringLiteral("actionSave_PNG_4320"));
+        actionSave_PNG_Custom = new QAction(MainWindow);
+        actionSave_PNG_Custom->setObjectName(QStringLiteral("actionSave_PNG_Custom"));
+        actionSave_PNG_8640 = new QAction(MainWindow);
+        actionSave_PNG_8640->setObjectName(QStringLiteral("actionSave_PNG_8640"));
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         QSizePolicy sizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
@@ -256,7 +268,12 @@ public:
         MainWindow->setMenuBar(menuBar);
 
         menuBar->addAction(menuFile->menuAction());
-        menuFile->addAction(actionSave_PNG);
+        menuFile->addAction(actionSave_PNG_8640);
+        menuFile->addAction(actionSave_PNG_4320);
+        menuFile->addAction(actionSave_PNG_2160);
+        menuFile->addAction(actionSave_PNG_1080);
+        menuFile->addAction(actionSave_PNG_Custom);
+        menuFile->addSeparator();
         menuFile->addAction(actionExit);
 
         retranslateUi(MainWindow);
@@ -267,8 +284,15 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", Q_NULLPTR));
-        actionSave_PNG->setText(QApplication::translate("MainWindow", "Save PNG", Q_NULLPTR));
         actionExit->setText(QApplication::translate("MainWindow", "Exit", Q_NULLPTR));
+        actionSave_PNG_2160->setText(QApplication::translate("MainWindow", "Save PNG (2160p)", Q_NULLPTR));
+#ifndef QT_NO_TOOLTIP
+        actionSave_PNG_2160->setToolTip(QApplication::translate("MainWindow", "Save PNG (2160p)", Q_NULLPTR));
+#endif // QT_NO_TOOLTIP
+        actionSave_PNG_1080->setText(QApplication::translate("MainWindow", "Save PNG (1080p)", Q_NULLPTR));
+        actionSave_PNG_4320->setText(QApplication::translate("MainWindow", "Save PNG (4320p)", Q_NULLPTR));
+        actionSave_PNG_Custom->setText(QApplication::translate("MainWindow", "Save PNG (Custom)", Q_NULLPTR));
+        actionSave_PNG_8640->setText(QApplication::translate("MainWindow", "Save PNG (8640p)", Q_NULLPTR));
         label->setText(QApplication::translate("MainWindow", "Iterations", Q_NULLPTR));
         label_4->setText(QApplication::translate("MainWindow", "Re [c]", Q_NULLPTR));
         label_5->setText(QApplication::translate("MainWindow", "Im [c]", Q_NULLPTR));

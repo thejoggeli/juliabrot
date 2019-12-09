@@ -85,7 +85,23 @@ void MainWindow::on_actionExit_triggered(){
 	close();
 }
 
-void MainWindow::on_actionSave_PNG_triggered(){
+void MainWindow::on_actionSave_PNG_1080_triggered(){
+	savePng(1920, 1080);
+}
+
+void MainWindow::on_actionSave_PNG_2160_triggered(){
+	savePng(1920*2, 1080*2);
+}
+
+void MainWindow::on_actionSave_PNG_4320_triggered(){
+	savePng(1920*4, 1080*4);
+}
+
+void MainWindow::on_actionSave_PNG_8640_triggered(){
+	savePng(1920*8, 1080*8);
+}
+
+void MainWindow::on_actionSave_PNG_Custom_triggered(){
 	QInputDialog dialog;
 	dialog.setWindowTitle("Save PNG");
 	dialog.setLabelText("Enter PNG dimensions (width x height)");
@@ -105,6 +121,11 @@ void MainWindow::on_actionSave_PNG_triggered(){
 		w = 0;
 		h = 0;
 	}
+	savePng(w, h);
+}
+
+
+void MainWindow::savePng(int w, int h){
 	if(w <= 0 || h <= 0){
 		QMessageBox::critical(this, "Error", "Invalid dimensions");
 		return;
@@ -112,6 +133,7 @@ void MainWindow::on_actionSave_PNG_triggered(){
 	QMessageBox box;
 	box.setStandardButtons(QMessageBox::Ok);
 	box.setWindowTitle("Save PNG");
+	box.setText("Saving image, please wait ...");
 	box.setIcon(QMessageBox::Information);
 
 	QImage image = QImage(w, h, QImage::Format_ARGB32);
