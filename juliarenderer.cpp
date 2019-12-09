@@ -183,19 +183,16 @@ void JuliaRenderer::render(QImage& image, double scale_factor)
 		break;
 	}
 
+	double zoom = camera.zoom * scale_factor;
+
 	auto f = [&](int x_start, int y_start) {
 		for (int xi = x_start; xi < x_end; xi += x_step) {
 			for (int yi = y_start; yi < y_end; yi += y_step) {
 				Vec2 coords = Vec2(xi - image.width() / 2, -(yi - image.height() / 2));
 
-				coords.set(coords.x * ccos + coords.y * csin,
-					coords.x * csin - coords.y * ccos);
-
-				coords.set(coords.x / (camera.zoom * scale_factor),
-					coords.y / (camera.zoom * scale_factor)); //
-				//      scale
-				coords.set(coords.x + camera.position.x,
-					coords.y + camera.position.y); // move
+				coords.set(coords.x * ccos + coords.y * csin, coords.x * csin - coords.y * ccos);
+				coords.set(coords.x / zoom, coords.y / zoom);
+				coords.set(coords.x + camera.position.x, coords.y + camera.position.y);
 				Vec2 c = rendering_mode == 1 ? coords : julia_c;
 				unsigned int color;
 				switch (color_algorithm) {
@@ -297,8 +294,8 @@ inline unsigned int JuliaRenderer::calcColorOrbit(const Vec2& coords,
 	if (inside)
 		return 0xFF000000;
 	min_dist = sqrt(min_dist);
-//	min_dist *= (double)max_iterations;
-//	min_dist /= 20.0;
+	//	min_dist *= (double)max_iterations;
+	//	min_dist /= 20.0;
 	double h = min_dist + JuliaTime::sinceStart * 0.025;
 	h = fmod(h, 1.0f);
 	float s = 1.0;

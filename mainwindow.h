@@ -8,37 +8,42 @@
 #include <QSpinBox>
 
 class JuliaWidget;
+class JuliaRenderer;
 
-namespace Ui
-{
+namespace Ui {
 class MainWindow;
 }
 
-class MainWindow : public QMainWindow
-{
-  Q_OBJECT
+class MainWindow : public QMainWindow {
+	Q_OBJECT
 
- public:
-  explicit MainWindow(QWidget* parent = nullptr);
-  JuliaWidget* getRenderTarget();
-  QLabel* getFPS();
-  int getValue();
-  double getImaginary();
-  double getReal();
-  int getRenderingMode();
-  int getColorMode();
-  void setStatusText(QString& text);
-  double getQuality();
-  bool resized = false;
+public:
+	explicit MainWindow(QWidget* parent = nullptr);
+	JuliaWidget* getRenderTarget();
+	QLabel* getFPS();
+	int getValue();
+	double getImaginary();
+	double getReal();
+	int getRenderingMode();
+	int getColorMode();
+	void setStatusText(QString& text);
+	double getQuality();
+	bool resized = false;
+	bool exitRequested = false;
+	JuliaRenderer* juliaRenderer;
 
-  ~MainWindow();
+	~MainWindow();
 
- private slots:
-  void on_comboBox_currentIndexChanged(int index);
+protected:
 
- private:
-  void resizeEvent(QResizeEvent* event);
-  Ui::MainWindow* ui;
+private slots:
+	void on_comboBox_currentIndexChanged(int index);
+	void on_actionSave_PNG_triggered();
+	void on_actionExit_triggered();
+
+private:
+	void resizeEvent(QResizeEvent* event);
+	Ui::MainWindow* ui;
 };
 
-#endif  // MAINWINDOW_H
+#endif // MAINWINDOW_H

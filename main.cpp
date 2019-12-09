@@ -29,6 +29,7 @@ int main(int argc, char* argv[])
   QImage* image = nullptr;
 
   JuliaRenderer* julia = new JuliaRenderer();  // Init Renderobject
+  window->juliaRenderer = julia;
 
   JuliaTime::start();  // Time Counter
 
