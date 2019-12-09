@@ -22,7 +22,7 @@ class JuliaRenderer : public QObject
 
   JuliaRenderer();
   void update();
-  void render(QImage& image);
+  void render(QImage& image, double scale_factor);
   bool eventFilter(QObject* Obj, QEvent* event) override;
 
  private:

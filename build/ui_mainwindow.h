@@ -42,6 +42,7 @@ public:
     QLabel *label;
     QSpinBox *spinBox;
     QLabel *label_4;
+    QDoubleSpinBox *doubleSpinBox_3;
     QLabel *label_5;
     QDoubleSpinBox *doubleSpinBox_2;
     QLabel *label_3;
@@ -50,7 +51,8 @@ public:
     QComboBox *comboBox_2;
     QLabel *label_11;
     QLabel *label_10;
-    QDoubleSpinBox *doubleSpinBox_3;
+    QDoubleSpinBox *doubleSpinBox;
+    QLabel *label_2;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
 
@@ -120,28 +122,39 @@ public:
         sizePolicy2.setHeightForWidth(label->sizePolicy().hasHeightForWidth());
         label->setSizePolicy(sizePolicy2);
 
-        formLayout->setWidget(0, QFormLayout::LabelRole, label);
+        formLayout->setWidget(1, QFormLayout::LabelRole, label);
 
         spinBox = new QSpinBox(centralWidget);
         spinBox->setObjectName(QStringLiteral("spinBox"));
-        spinBox->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
+        spinBox->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
+        spinBox->setMaximum(1000);
         spinBox->setValue(20);
 
-        formLayout->setWidget(0, QFormLayout::FieldRole, spinBox);
+        formLayout->setWidget(1, QFormLayout::FieldRole, spinBox);
 
         label_4 = new QLabel(centralWidget);
         label_4->setObjectName(QStringLiteral("label_4"));
         sizePolicy2.setHeightForWidth(label_4->sizePolicy().hasHeightForWidth());
         label_4->setSizePolicy(sizePolicy2);
 
-        formLayout->setWidget(1, QFormLayout::LabelRole, label_4);
+        formLayout->setWidget(2, QFormLayout::LabelRole, label_4);
+
+        doubleSpinBox_3 = new QDoubleSpinBox(centralWidget);
+        doubleSpinBox_3->setObjectName(QStringLiteral("doubleSpinBox_3"));
+        doubleSpinBox_3->setDecimals(3);
+        doubleSpinBox_3->setMinimum(-1);
+        doubleSpinBox_3->setMaximum(1);
+        doubleSpinBox_3->setSingleStep(0.001);
+        doubleSpinBox_3->setValue(-0.8);
+
+        formLayout->setWidget(2, QFormLayout::FieldRole, doubleSpinBox_3);
 
         label_5 = new QLabel(centralWidget);
         label_5->setObjectName(QStringLiteral("label_5"));
         sizePolicy2.setHeightForWidth(label_5->sizePolicy().hasHeightForWidth());
         label_5->setSizePolicy(sizePolicy2);
 
-        formLayout->setWidget(2, QFormLayout::LabelRole, label_5);
+        formLayout->setWidget(3, QFormLayout::LabelRole, label_5);
 
         doubleSpinBox_2 = new QDoubleSpinBox(centralWidget);
         doubleSpinBox_2->setObjectName(QStringLiteral("doubleSpinBox_2"));
@@ -156,14 +169,14 @@ public:
         doubleSpinBox_2->setSingleStep(0.001);
         doubleSpinBox_2->setValue(0.156);
 
-        formLayout->setWidget(2, QFormLayout::FieldRole, doubleSpinBox_2);
+        formLayout->setWidget(3, QFormLayout::FieldRole, doubleSpinBox_2);
 
         label_3 = new QLabel(centralWidget);
         label_3->setObjectName(QStringLiteral("label_3"));
         sizePolicy2.setHeightForWidth(label_3->sizePolicy().hasHeightForWidth());
         label_3->setSizePolicy(sizePolicy2);
 
-        formLayout->setWidget(3, QFormLayout::LabelRole, label_3);
+        formLayout->setWidget(4, QFormLayout::LabelRole, label_3);
 
         comboBox = new QComboBox(centralWidget);
         comboBox->setObjectName(QStringLiteral("comboBox"));
@@ -171,45 +184,50 @@ public:
         comboBox->setSizePolicy(sizePolicy3);
         comboBox->setMaxVisibleItems(2);
 
-        formLayout->setWidget(3, QFormLayout::FieldRole, comboBox);
+        formLayout->setWidget(4, QFormLayout::FieldRole, comboBox);
 
         label_6 = new QLabel(centralWidget);
         label_6->setObjectName(QStringLiteral("label_6"));
         sizePolicy2.setHeightForWidth(label_6->sizePolicy().hasHeightForWidth());
         label_6->setSizePolicy(sizePolicy2);
 
-        formLayout->setWidget(4, QFormLayout::LabelRole, label_6);
+        formLayout->setWidget(5, QFormLayout::LabelRole, label_6);
 
         comboBox_2 = new QComboBox(centralWidget);
         comboBox_2->setObjectName(QStringLiteral("comboBox_2"));
         sizePolicy3.setHeightForWidth(comboBox_2->sizePolicy().hasHeightForWidth());
         comboBox_2->setSizePolicy(sizePolicy3);
 
-        formLayout->setWidget(4, QFormLayout::FieldRole, comboBox_2);
+        formLayout->setWidget(5, QFormLayout::FieldRole, comboBox_2);
 
         label_11 = new QLabel(centralWidget);
         label_11->setObjectName(QStringLiteral("label_11"));
         sizePolicy2.setHeightForWidth(label_11->sizePolicy().hasHeightForWidth());
         label_11->setSizePolicy(sizePolicy2);
 
-        formLayout->setWidget(5, QFormLayout::LabelRole, label_11);
+        formLayout->setWidget(6, QFormLayout::LabelRole, label_11);
 
         label_10 = new QLabel(centralWidget);
         label_10->setObjectName(QStringLiteral("label_10"));
         sizePolicy2.setHeightForWidth(label_10->sizePolicy().hasHeightForWidth());
         label_10->setSizePolicy(sizePolicy2);
 
-        formLayout->setWidget(5, QFormLayout::FieldRole, label_10);
+        formLayout->setWidget(6, QFormLayout::FieldRole, label_10);
 
-        doubleSpinBox_3 = new QDoubleSpinBox(centralWidget);
-        doubleSpinBox_3->setObjectName(QStringLiteral("doubleSpinBox_3"));
-        doubleSpinBox_3->setDecimals(3);
-        doubleSpinBox_3->setMinimum(-1);
-        doubleSpinBox_3->setMaximum(1);
-        doubleSpinBox_3->setSingleStep(0.001);
-        doubleSpinBox_3->setValue(-0.8);
+        doubleSpinBox = new QDoubleSpinBox(centralWidget);
+        doubleSpinBox->setObjectName(QStringLiteral("doubleSpinBox"));
+        doubleSpinBox->setDecimals(0);
+        doubleSpinBox->setMinimum(10);
+        doubleSpinBox->setMaximum(100);
+        doubleSpinBox->setSingleStep(10);
+        doubleSpinBox->setValue(50);
 
-        formLayout->setWidget(1, QFormLayout::FieldRole, doubleSpinBox_3);
+        formLayout->setWidget(0, QFormLayout::FieldRole, doubleSpinBox);
+
+        label_2 = new QLabel(centralWidget);
+        label_2->setObjectName(QStringLiteral("label_2"));
+
+        formLayout->setWidget(0, QFormLayout::LabelRole, label_2);
 
 
         horizontalLayout->addLayout(formLayout);
@@ -223,6 +241,7 @@ public:
         MainWindow->addToolBar(Qt::TopToolBarArea, mainToolBar);
         statusBar = new QStatusBar(MainWindow);
         statusBar->setObjectName(QStringLiteral("statusBar"));
+        statusBar->setInputMethodHints(Qt::ImhDate|Qt::ImhTime);
         MainWindow->setStatusBar(statusBar);
 
         retranslateUi(MainWindow);
@@ -261,6 +280,7 @@ public:
 "<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">to zoom</p>\n"
 "<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">ro reset</p></"
                         "body></html>", Q_NULLPTR));
+        label_2->setText(QApplication::translate("MainWindow", "Quality %", Q_NULLPTR));
     } // retranslateUi
 
 };

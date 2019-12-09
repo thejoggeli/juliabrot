@@ -84,6 +84,14 @@ void MainWindow::setStatusText(QString& text)
   statusBar()->showMessage(text);
 }
 
+void MainWindow::resizeEvent(QResizeEvent *event){
+	resized = true;
+}
+
+double MainWindow::getQuality(){
+	return ui->doubleSpinBox->value()*0.01;
+}
+
 /* void MainWindow::on_doubleSpinBox_3_valueChanged(double arg1)
 {
 }

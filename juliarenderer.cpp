@@ -128,13 +128,13 @@ bool JuliaRenderer::eventFilter(QObject* obj, QEvent* event)
   }
 }
 
-void JuliaRenderer::render(QImage& image)
+void JuliaRenderer::render(QImage& image, double scale_factor)
 {
   double csin = sin(camera.rotation);
   double ccos = cos(camera.rotation);
 
-  const int x_step = 2;
-  const int y_step = 2;
+  const int x_step = 4;
+  const int y_step = 4;
   const int x_end = image.width();
   const int y_end = image.height();
   const int num_threads = x_step*y_step;
@@ -170,8 +170,7 @@ void JuliaRenderer::render(QImage& image)
 			coords.set(coords.x * ccos + coords.y * csin,
 					 coords.x * csin - coords.y * ccos);
 
-			coords.set(coords.x / camera.zoom,
-					 coords.y / camera.zoom);  //
+			coords.set(coords.x / (camera.zoom * scale_factor), coords.y / (camera.zoom * scale_factor));  //
 											   //      scale
 			coords.set(coords.x + camera.position.x,
 					 coords.y + camera.position.y);  // move

@@ -28,14 +28,16 @@ class MainWindow : public QMainWindow
   int getRenderingMode();
   int getColorMode();
   void setStatusText(QString& text);
+  double getQuality();
+  bool resized = false;
 
   ~MainWindow();
 
  private slots:
-
   void on_comboBox_currentIndexChanged(int index);
 
  private:
+  void resizeEvent(QResizeEvent* event);
   Ui::MainWindow* ui;
 };
 
