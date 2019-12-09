@@ -266,8 +266,13 @@ public:
         comboBox_2->insertItems(0, QStringList()
          << QApplication::translate("MainWindow", "Escape Time #1", Q_NULLPTR)
          << QApplication::translate("MainWindow", "Escape Time #2", Q_NULLPTR)
-         << QApplication::translate("MainWindow", "Orbit Trap #1", Q_NULLPTR)
-         << QApplication::translate("MainWindow", "Orbit Trap #2", Q_NULLPTR)
+         << QApplication::translate("MainWindow", "Orbit Trap [P1]", Q_NULLPTR)
+         << QApplication::translate("MainWindow", "Orbit Trap [P2]", Q_NULLPTR)
+         << QApplication::translate("MainWindow", "Orbit Trap [P3]", Q_NULLPTR)
+         << QApplication::translate("MainWindow", "Orbit Trap [P+]", Q_NULLPTR)
+         << QApplication::translate("MainWindow", "Orbit Trap [C]", Q_NULLPTR)
+         << QApplication::translate("MainWindow", "Orbit Trap [X]", Q_NULLPTR)
+         << QApplication::translate("MainWindow", "Orbit Trap [Y]", Q_NULLPTR)
         );
         label_11->setText(QApplication::translate("MainWindow", "<html><head/><body><p>Controls</p><p>[WSAD]</p><p>[QE]</p><p>[RF]</p><p>[Backspace]</p></body></html>", Q_NULLPTR));
         label_10->setText(QApplication::translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"

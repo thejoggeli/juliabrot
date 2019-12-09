@@ -313,12 +313,37 @@
           </item>
           <item>
            <property name="text">
-            <string>Orbit Trap #1</string>
+            <string>Orbit Trap [P1]</string>
            </property>
           </item>
           <item>
            <property name="text">
-            <string>Orbit Trap #2</string>
+            <string>Orbit Trap [P2]</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Orbit Trap [P3]</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Orbit Trap [P+]</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Orbit Trap [C]</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Orbit Trap [X]</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Orbit Trap [Y]</string>
            </property>
           </item>
          </widget>
