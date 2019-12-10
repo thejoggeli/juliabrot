@@ -21,9 +21,10 @@
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
+#include <QtWidgets/QMenu>
+#include <QtWidgets/QMenuBar>
 #include <QtWidgets/QSpinBox>
 #include <QtWidgets/QStatusBar>
-#include <QtWidgets/QToolBar>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 #include "juliawidget.h"
@@ -33,6 +34,12 @@ QT_BEGIN_NAMESPACE
 class Ui_MainWindow
 {
 public:
+    QAction *actionExit;
+    QAction *actionSave_PNG_2160;
+    QAction *actionSave_PNG_1080;
+    QAction *actionSave_PNG_4320;
+    QAction *actionSave_PNG_Custom;
+    QAction *actionSave_PNG_8640;
     QWidget *centralWidget;
     QVBoxLayout *verticalLayout;
     QHBoxLayout *horizontalLayout;
@@ -42,6 +49,7 @@ public:
     QLabel *label;
     QSpinBox *spinBox;
     QLabel *label_4;
+    QDoubleSpinBox *doubleSpinBox_3;
     QLabel *label_5;
     QDoubleSpinBox *doubleSpinBox_2;
     QLabel *label_3;
@@ -50,15 +58,29 @@ public:
     QComboBox *comboBox_2;
     QLabel *label_11;
     QLabel *label_10;
-    QDoubleSpinBox *doubleSpinBox_3;
-    QToolBar *mainToolBar;
+    QDoubleSpinBox *doubleSpinBox;
+    QLabel *label_2;
     QStatusBar *statusBar;
+    QMenuBar *menuBar;
+    QMenu *menuFile;
 
     void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
         MainWindow->resize(1104, 870);
+        actionExit = new QAction(MainWindow);
+        actionExit->setObjectName(QStringLiteral("actionExit"));
+        actionSave_PNG_2160 = new QAction(MainWindow);
+        actionSave_PNG_2160->setObjectName(QStringLiteral("actionSave_PNG_2160"));
+        actionSave_PNG_1080 = new QAction(MainWindow);
+        actionSave_PNG_1080->setObjectName(QStringLiteral("actionSave_PNG_1080"));
+        actionSave_PNG_4320 = new QAction(MainWindow);
+        actionSave_PNG_4320->setObjectName(QStringLiteral("actionSave_PNG_4320"));
+        actionSave_PNG_Custom = new QAction(MainWindow);
+        actionSave_PNG_Custom->setObjectName(QStringLiteral("actionSave_PNG_Custom"));
+        actionSave_PNG_8640 = new QAction(MainWindow);
+        actionSave_PNG_8640->setObjectName(QStringLiteral("actionSave_PNG_8640"));
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         QSizePolicy sizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
@@ -120,28 +142,39 @@ public:
         sizePolicy2.setHeightForWidth(label->sizePolicy().hasHeightForWidth());
         label->setSizePolicy(sizePolicy2);
 
-        formLayout->setWidget(0, QFormLayout::LabelRole, label);
+        formLayout->setWidget(1, QFormLayout::LabelRole, label);
 
         spinBox = new QSpinBox(centralWidget);
         spinBox->setObjectName(QStringLiteral("spinBox"));
-        spinBox->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
+        spinBox->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
+        spinBox->setMaximum(1000);
         spinBox->setValue(20);
 
-        formLayout->setWidget(0, QFormLayout::FieldRole, spinBox);
+        formLayout->setWidget(1, QFormLayout::FieldRole, spinBox);
 
         label_4 = new QLabel(centralWidget);
         label_4->setObjectName(QStringLiteral("label_4"));
         sizePolicy2.setHeightForWidth(label_4->sizePolicy().hasHeightForWidth());
         label_4->setSizePolicy(sizePolicy2);
 
-        formLayout->setWidget(1, QFormLayout::LabelRole, label_4);
+        formLayout->setWidget(2, QFormLayout::LabelRole, label_4);
+
+        doubleSpinBox_3 = new QDoubleSpinBox(centralWidget);
+        doubleSpinBox_3->setObjectName(QStringLiteral("doubleSpinBox_3"));
+        doubleSpinBox_3->setDecimals(3);
+        doubleSpinBox_3->setMinimum(-1);
+        doubleSpinBox_3->setMaximum(1);
+        doubleSpinBox_3->setSingleStep(0.001);
+        doubleSpinBox_3->setValue(-0.8);
+
+        formLayout->setWidget(2, QFormLayout::FieldRole, doubleSpinBox_3);
 
         label_5 = new QLabel(centralWidget);
         label_5->setObjectName(QStringLiteral("label_5"));
         sizePolicy2.setHeightForWidth(label_5->sizePolicy().hasHeightForWidth());
         label_5->setSizePolicy(sizePolicy2);
 
-        formLayout->setWidget(2, QFormLayout::LabelRole, label_5);
+        formLayout->setWidget(3, QFormLayout::LabelRole, label_5);
 
         doubleSpinBox_2 = new QDoubleSpinBox(centralWidget);
         doubleSpinBox_2->setObjectName(QStringLiteral("doubleSpinBox_2"));
@@ -156,14 +189,14 @@ public:
         doubleSpinBox_2->setSingleStep(0.001);
         doubleSpinBox_2->setValue(0.156);
 
-        formLayout->setWidget(2, QFormLayout::FieldRole, doubleSpinBox_2);
+        formLayout->setWidget(3, QFormLayout::FieldRole, doubleSpinBox_2);
 
         label_3 = new QLabel(centralWidget);
         label_3->setObjectName(QStringLiteral("label_3"));
         sizePolicy2.setHeightForWidth(label_3->sizePolicy().hasHeightForWidth());
         label_3->setSizePolicy(sizePolicy2);
 
-        formLayout->setWidget(3, QFormLayout::LabelRole, label_3);
+        formLayout->setWidget(4, QFormLayout::LabelRole, label_3);
 
         comboBox = new QComboBox(centralWidget);
         comboBox->setObjectName(QStringLiteral("comboBox"));
@@ -171,45 +204,50 @@ public:
         comboBox->setSizePolicy(sizePolicy3);
         comboBox->setMaxVisibleItems(2);
 
-        formLayout->setWidget(3, QFormLayout::FieldRole, comboBox);
+        formLayout->setWidget(4, QFormLayout::FieldRole, comboBox);
 
         label_6 = new QLabel(centralWidget);
         label_6->setObjectName(QStringLiteral("label_6"));
         sizePolicy2.setHeightForWidth(label_6->sizePolicy().hasHeightForWidth());
         label_6->setSizePolicy(sizePolicy2);
 
-        formLayout->setWidget(4, QFormLayout::LabelRole, label_6);
+        formLayout->setWidget(5, QFormLayout::LabelRole, label_6);
 
         comboBox_2 = new QComboBox(centralWidget);
         comboBox_2->setObjectName(QStringLiteral("comboBox_2"));
         sizePolicy3.setHeightForWidth(comboBox_2->sizePolicy().hasHeightForWidth());
         comboBox_2->setSizePolicy(sizePolicy3);
 
-        formLayout->setWidget(4, QFormLayout::FieldRole, comboBox_2);
+        formLayout->setWidget(5, QFormLayout::FieldRole, comboBox_2);
 
         label_11 = new QLabel(centralWidget);
         label_11->setObjectName(QStringLiteral("label_11"));
         sizePolicy2.setHeightForWidth(label_11->sizePolicy().hasHeightForWidth());
         label_11->setSizePolicy(sizePolicy2);
 
-        formLayout->setWidget(5, QFormLayout::LabelRole, label_11);
+        formLayout->setWidget(6, QFormLayout::LabelRole, label_11);
 
         label_10 = new QLabel(centralWidget);
         label_10->setObjectName(QStringLiteral("label_10"));
         sizePolicy2.setHeightForWidth(label_10->sizePolicy().hasHeightForWidth());
         label_10->setSizePolicy(sizePolicy2);
 
-        formLayout->setWidget(5, QFormLayout::FieldRole, label_10);
+        formLayout->setWidget(6, QFormLayout::FieldRole, label_10);
 
-        doubleSpinBox_3 = new QDoubleSpinBox(centralWidget);
-        doubleSpinBox_3->setObjectName(QStringLiteral("doubleSpinBox_3"));
-        doubleSpinBox_3->setDecimals(3);
-        doubleSpinBox_3->setMinimum(-1);
-        doubleSpinBox_3->setMaximum(1);
-        doubleSpinBox_3->setSingleStep(0.001);
-        doubleSpinBox_3->setValue(-0.8);
+        doubleSpinBox = new QDoubleSpinBox(centralWidget);
+        doubleSpinBox->setObjectName(QStringLiteral("doubleSpinBox"));
+        doubleSpinBox->setDecimals(0);
+        doubleSpinBox->setMinimum(10);
+        doubleSpinBox->setMaximum(100);
+        doubleSpinBox->setSingleStep(10);
+        doubleSpinBox->setValue(50);
 
-        formLayout->setWidget(1, QFormLayout::FieldRole, doubleSpinBox_3);
+        formLayout->setWidget(0, QFormLayout::FieldRole, doubleSpinBox);
+
+        label_2 = new QLabel(centralWidget);
+        label_2->setObjectName(QStringLiteral("label_2"));
+
+        formLayout->setWidget(0, QFormLayout::LabelRole, label_2);
 
 
         horizontalLayout->addLayout(formLayout);
@@ -218,12 +256,25 @@ public:
         verticalLayout->addLayout(horizontalLayout);
 
         MainWindow->setCentralWidget(centralWidget);
-        mainToolBar = new QToolBar(MainWindow);
-        mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
-        MainWindow->addToolBar(Qt::TopToolBarArea, mainToolBar);
         statusBar = new QStatusBar(MainWindow);
         statusBar->setObjectName(QStringLiteral("statusBar"));
+        statusBar->setInputMethodHints(Qt::ImhDate|Qt::ImhTime);
         MainWindow->setStatusBar(statusBar);
+        menuBar = new QMenuBar(MainWindow);
+        menuBar->setObjectName(QStringLiteral("menuBar"));
+        menuBar->setGeometry(QRect(0, 0, 1104, 22));
+        menuFile = new QMenu(menuBar);
+        menuFile->setObjectName(QStringLiteral("menuFile"));
+        MainWindow->setMenuBar(menuBar);
+
+        menuBar->addAction(menuFile->menuAction());
+        menuFile->addAction(actionSave_PNG_8640);
+        menuFile->addAction(actionSave_PNG_4320);
+        menuFile->addAction(actionSave_PNG_2160);
+        menuFile->addAction(actionSave_PNG_1080);
+        menuFile->addAction(actionSave_PNG_Custom);
+        menuFile->addSeparator();
+        menuFile->addAction(actionExit);
 
         retranslateUi(MainWindow);
 
@@ -233,6 +284,15 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", Q_NULLPTR));
+        actionExit->setText(QApplication::translate("MainWindow", "Exit", Q_NULLPTR));
+        actionSave_PNG_2160->setText(QApplication::translate("MainWindow", "Save PNG (2160p)", Q_NULLPTR));
+#ifndef QT_NO_TOOLTIP
+        actionSave_PNG_2160->setToolTip(QApplication::translate("MainWindow", "Save PNG (2160p)", Q_NULLPTR));
+#endif // QT_NO_TOOLTIP
+        actionSave_PNG_1080->setText(QApplication::translate("MainWindow", "Save PNG (1080p)", Q_NULLPTR));
+        actionSave_PNG_4320->setText(QApplication::translate("MainWindow", "Save PNG (4320p)", Q_NULLPTR));
+        actionSave_PNG_Custom->setText(QApplication::translate("MainWindow", "Save PNG (Custom)", Q_NULLPTR));
+        actionSave_PNG_8640->setText(QApplication::translate("MainWindow", "Save PNG (8640p)", Q_NULLPTR));
         label->setText(QApplication::translate("MainWindow", "Iterations", Q_NULLPTR));
         label_4->setText(QApplication::translate("MainWindow", "Re [c]", Q_NULLPTR));
         label_5->setText(QApplication::translate("MainWindow", "Im [c]", Q_NULLPTR));
@@ -247,8 +307,13 @@ public:
         comboBox_2->insertItems(0, QStringList()
          << QApplication::translate("MainWindow", "Escape Time #1", Q_NULLPTR)
          << QApplication::translate("MainWindow", "Escape Time #2", Q_NULLPTR)
-         << QApplication::translate("MainWindow", "Orbit Trap #1", Q_NULLPTR)
-         << QApplication::translate("MainWindow", "Orbit Trap #2", Q_NULLPTR)
+         << QApplication::translate("MainWindow", "Orbit Trap [P1]", Q_NULLPTR)
+         << QApplication::translate("MainWindow", "Orbit Trap [P2]", Q_NULLPTR)
+         << QApplication::translate("MainWindow", "Orbit Trap [P3]", Q_NULLPTR)
+         << QApplication::translate("MainWindow", "Orbit Trap [P+]", Q_NULLPTR)
+         << QApplication::translate("MainWindow", "Orbit Trap [C]", Q_NULLPTR)
+         << QApplication::translate("MainWindow", "Orbit Trap [X]", Q_NULLPTR)
+         << QApplication::translate("MainWindow", "Orbit Trap [Y]", Q_NULLPTR)
         );
         label_11->setText(QApplication::translate("MainWindow", "<html><head/><body><p>Controls</p><p>[WSAD]</p><p>[QE]</p><p>[RF]</p><p>[Backspace]</p></body></html>", Q_NULLPTR));
         label_10->setText(QApplication::translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
@@ -261,6 +326,8 @@ public:
 "<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">to zoom</p>\n"
 "<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">ro reset</p></"
                         "body></html>", Q_NULLPTR));
+        label_2->setText(QApplication::translate("MainWindow", "Quality %", Q_NULLPTR));
+        menuFile->setTitle(QApplication::translate("MainWindow", "File", Q_NULLPTR));
     } // retranslateUi
 
 };
