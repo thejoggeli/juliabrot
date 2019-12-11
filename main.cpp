@@ -47,7 +47,8 @@ int main(int argc, char* argv[])
     }
     if (window->resized || image == nullptr || img_quality_changed)
     {
-      double aspect = ((double) label->width()) / ((double) label->height());
+      double aspect = static_cast<double>(label->width()) /
+                      static_cast<double>(label->height());
       int img_h = ceil(((double) label->height()) * img_quality);
       int img_w = ceil(((double) img_h) * aspect);
       image = new QImage(img_w, img_h, QImage::Format_ARGB32);
