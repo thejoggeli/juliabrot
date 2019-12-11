@@ -30,14 +30,18 @@ SOURCES += \
     juliarenderer.cpp \
     camera.cpp \
     vec2.cpp \
-    juliatime.cpp
+    juliatime.cpp \
+    colorhsl.cpp \
+    juliawidget.cpp
 
 HEADERS += \
         mainwindow.h \
     juliarenderer.h \
     camera.h \
     vec2.h \
-    juliatime.h
+    juliatime.h \
+    colorhsl.h \
+    juliawidget.h
 
 FORMS += \
         mainwindow.ui

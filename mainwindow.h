@@ -7,35 +7,49 @@
 #include <QPushButton>
 #include <QSpinBox>
 
-namespace Ui
-{
+class JuliaWidget;
+class JuliaRenderer;
+
+namespace Ui {
 class MainWindow;
 }
 
-class MainWindow : public QMainWindow
-{
-  Q_OBJECT
+class MainWindow : public QMainWindow {
+	Q_OBJECT
 
- public:
-  explicit MainWindow(QWidget* parent = nullptr);
-  QLabel* getRenderTarget();
-  QLabel* getFPS();
-  int getValue();
-  double getcomplex();
-  double getreel();
-  int getmode();
+public:
+	explicit MainWindow(QWidget* parent = nullptr);
+	JuliaWidget* getRenderTarget();
+	QLabel* getFPS();
+	int getValue();
+	double getImaginary();
+	double getReal();
+	int getRenderingMode();
+	int getColorMode();
+	void setStatusText(QString& text);
+	double getQuality();
+	bool resized = false;
+	bool exitRequested = false;
+	JuliaRenderer* juliaRenderer;
 
-  ~MainWindow();
+	~MainWindow();
 
- private slots:
-  void on_pushButton_clicked();
+protected:
 
-  void on_comboBox_currentIndexChanged(int index);
+	void savePng(int w, int h);
 
-  void on_doubleSpinBox_3_valueChanged(double arg1);
+private slots:
+	void on_comboBox_currentIndexChanged(int index);
+	void on_actionSave_PNG_Custom_triggered();
+	void on_actionSave_PNG_1080_triggered();
+	void on_actionSave_PNG_2160_triggered();
+	void on_actionSave_PNG_4320_triggered();
+	void on_actionSave_PNG_8640_triggered();
+	void on_actionExit_triggered();
 
- private:
-  Ui::MainWindow* ui;
+private:
+	void resizeEvent(QResizeEvent* event);
+	Ui::MainWindow* ui;
 };
 
-#endif  // MAINWINDOW_H
+#endif // MAINWINDOW_H

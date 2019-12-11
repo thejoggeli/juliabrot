@@ -55,14 +55,20 @@ SOURCES       = ../main.cpp \
 		../juliarenderer.cpp \
 		../camera.cpp \
 		../vec2.cpp \
-		../juliatime.cpp moc_mainwindow.cpp
+		../juliatime.cpp \
+		../colorhsl.cpp \
+		../juliawidget.cpp moc_mainwindow.cpp \
+		moc_juliawidget.cpp
 OBJECTS       = main.o \
 		mainwindow.o \
 		juliarenderer.o \
 		camera.o \
 		vec2.o \
 		juliatime.o \
-		moc_mainwindow.o
+		colorhsl.o \
+		juliawidget.o \
+		moc_mainwindow.o \
+		moc_juliawidget.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/linux.conf \
@@ -141,12 +147,16 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		../juliarenderer.h \
 		../camera.h \
 		../vec2.h \
-		../juliatime.h ../main.cpp \
+		../juliatime.h \
+		../colorhsl.h \
+		../juliawidget.h ../main.cpp \
 		../mainwindow.cpp \
 		../juliarenderer.cpp \
 		../camera.cpp \
 		../vec2.cpp \
-		../juliatime.cpp
+		../juliatime.cpp \
+		../colorhsl.cpp \
+		../juliawidget.cpp
 QMAKE_TARGET  = Juliabrot
 DESTDIR       = 
 TARGET        = Juliabrot
@@ -330,8 +340,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../mainwindow.h ../juliarenderer.h ../camera.h ../vec2.h ../juliatime.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../main.cpp ../mainwindow.cpp ../juliarenderer.cpp ../camera.cpp ../vec2.cpp ../juliatime.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../mainwindow.h ../juliarenderer.h ../camera.h ../vec2.h ../juliatime.h ../colorhsl.h ../juliawidget.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../main.cpp ../mainwindow.cpp ../juliarenderer.cpp ../camera.cpp ../vec2.cpp ../juliatime.cpp ../colorhsl.cpp ../juliawidget.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../mainwindow.ui $(DISTDIR)/
 
 
@@ -364,13 +374,18 @@ compiler_moc_predefs_clean:
 moc_predefs.h: /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp
 	g++ -pipe -g -std=gnu++11 -Wall -W -dM -E -o moc_predefs.h /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_mainwindow.cpp
+compiler_moc_header_make_all: moc_mainwindow.cpp moc_juliawidget.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_mainwindow.cpp
+	-$(DEL_FILE) moc_mainwindow.cpp moc_juliawidget.cpp
 moc_mainwindow.cpp: ../mainwindow.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
 	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/michael/repos/Juliabrot -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../mainwindow.h -o moc_mainwindow.cpp
+
+moc_juliawidget.cpp: ../juliawidget.h \
+		moc_predefs.h \
+		/usr/lib/qt5/bin/moc
+	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/michael/repos/Juliabrot -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../juliawidget.h -o moc_juliawidget.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
@@ -378,7 +393,8 @@ compiler_uic_make_all: ui_mainwindow.h
 compiler_uic_clean:
 	-$(DEL_FILE) ui_mainwindow.h
 ui_mainwindow.h: ../mainwindow.ui \
-		/usr/lib/qt5/bin/uic
+		/usr/lib/qt5/bin/uic \
+		../juliawidget.h
 	/usr/lib/qt5/bin/uic ../mainwindow.ui -o ui_mainwindow.h
 
 compiler_yacc_decl_make_all:
@@ -391,11 +407,11 @@ compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_ui
 
 ####### Compile
 
-main.o: ../main.cpp ../mainwindow.h \
-		../juliarenderer.h \
+main.o: ../main.cpp ../juliarenderer.h \
 		../camera.h \
 		../vec2.h \
-		../juliatime.h
+		../juliatime.h \
+		../mainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../main.cpp
 
 mainwindow.o: ../mainwindow.cpp ../mainwindow.h \
@@ -404,7 +420,9 @@ mainwindow.o: ../mainwindow.cpp ../mainwindow.h \
 
 juliarenderer.o: ../juliarenderer.cpp ../juliarenderer.h \
 		../camera.h \
-		../vec2.h
+		../vec2.h \
+		../juliatime.h \
+		../colorhsl.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o juliarenderer.o ../juliarenderer.cpp
 
 camera.o: ../camera.cpp ../camera.h \
@@ -417,8 +435,17 @@ vec2.o: ../vec2.cpp ../vec2.h
 juliatime.o: ../juliatime.cpp ../juliatime.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o juliatime.o ../juliatime.cpp
 
+colorhsl.o: ../colorhsl.cpp ../colorhsl.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o colorhsl.o ../colorhsl.cpp
+
+juliawidget.o: ../juliawidget.cpp ../juliawidget.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o juliawidget.o ../juliawidget.cpp
+
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp
+
+moc_juliawidget.o: moc_juliawidget.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_juliawidget.o moc_juliawidget.cpp
 
 ####### Install
 
