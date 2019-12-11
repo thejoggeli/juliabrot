@@ -49,7 +49,8 @@ int main(int argc, char* argv[])
     {
       double aspect = static_cast<double>(label->width()) /
                       static_cast<double>(label->height());
-      int img_h = ceil(((double) label->height()) * img_quality);
+      int img_h = static_cast<int>(
+          ceil(static_cast<double>(label->height()) * img_quality));
       int img_w = ceil(((double) img_h) * aspect);
       image = new QImage(img_w, img_h, QImage::Format_ARGB32);
       label->setImage(image);
