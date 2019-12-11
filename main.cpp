@@ -13,7 +13,7 @@
 #include "juliawidget.h"
 #include "mainwindow.h"
 
-using namespace std;
+using namespace std;  // Namespace std verwendet
 
 int main(int argc, char* argv[])
 {
