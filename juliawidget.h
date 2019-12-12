@@ -14,7 +14,10 @@ public:
 	void setImage(QImage* image);
 
 protected:
+
 	void paintEvent(QPaintEvent *event);
+
+	//! the image to draw to the panel
 	QImage* image;
 
 signals:

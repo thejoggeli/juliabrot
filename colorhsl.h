@@ -11,6 +11,10 @@ public:
 	//! \return 32-bit integer (e.g. yellow = 0xFFFF00)
 	static unsigned int GetRgbUint32(float h, float s, float l);
 protected:
+
+	//! convert hue to rgb (used for hsl-2-rgb algorithm)
 	static float HueToRgb(float p, float q, float t);
+
+	//! wrap hue between 0 and 1
 	static float WrapHue(float hue);
 };

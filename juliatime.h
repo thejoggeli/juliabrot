@@ -35,8 +35,13 @@ public:
 	static int fps;
 
 private:
+
+	//! fps counter (for internal use)
 	static int fpsCounter;
+
+	//! last time the fps was updated (internal use)
 	static int lastFpsTimeMs;
+
 };
 
 #endif // TIME_H
