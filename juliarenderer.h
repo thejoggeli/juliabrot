@@ -25,8 +25,10 @@ public:
 	//! maximum number of iterations
 	int max_iterations = 25;
 
-private:
+	//! determines how the fractal gets colorized
 	int color_mode = 1;
+
+private:
 	bool descending_lightness = false;
 	int orbit_trap_function = 0;
 	double orbit_circle_radius_squared = 1;
