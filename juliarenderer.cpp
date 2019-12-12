@@ -60,8 +60,8 @@ void JuliaRenderer::update()
 
 	// Motion adjustment and speed adjustment in Zoom&Rotation
 
-	vx *= JuliaTime::deltaTime * 100;
-	vy *= JuliaTime::deltaTime * 100;
+	vx *= JuliaTime::deltaTime * 160;
+	vy *= JuliaTime::deltaTime * 160;
 
 	vx /= camera.zoom;
 	vy /= camera.zoom;
@@ -324,9 +324,17 @@ inline unsigned int JuliaRenderer::calcColorOrbit(const Vec2& coords,
 	if (inside)
 		return 0xFF000000;
 	min_dist = sqrt(min_dist);
-	//	min_dist *= (double)max_iterations;
-	//	min_dist /= 20.0;
-	double h = min_dist + JuliaTime::sinceStart * 0.025;
+
+/*	double r = 255 - 255.0 * min_dist;
+	double g = r;
+	double b = 128 * min_dist;
+	unsigned int r255 = min(255, max(0, (int)r));
+	unsigned int g255 = r255;
+	unsigned int b255 = min(255, max(0, (int)b));
+	return 0xFF000000u | (r255 << 16u) | (g255 << 8u) | b255; */
+
+
+	double h = min_dist * (double) (max_iterations) / (20.0) + JuliaTime::sinceStart * 0.025;
 	h = fmod(h, 1.0f);
 	float s = 1.0;
 	float l;
