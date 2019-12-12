@@ -8,6 +8,9 @@ class JuliaWidget : public QWidget
 	Q_OBJECT
 public:
 	explicit JuliaWidget(QWidget *parent = nullptr);
+
+	//! set the image that gets renderer to the widget panel
+	//! \param image pointer to the image
 	void setImage(QImage* image);
 
 protected:
