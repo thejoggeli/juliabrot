@@ -60,8 +60,8 @@ void JuliaRenderer::update()
 
 	// Motion adjustment and speed adjustment in Zoom&Rotation
 
-	vx *= JuliaTime::deltaTime * 100;
-	vy *= JuliaTime::deltaTime * 100;
+	vx *= JuliaTime::deltaTime * 160;
+	vy *= JuliaTime::deltaTime * 160;
 
 	vx /= camera.zoom;
 	vy /= camera.zoom;
@@ -141,44 +141,54 @@ void JuliaRenderer::render(QImage& image, double scale_factor)
 		color_algorithm = 0;
 		descending_lightness = false;
 		break;
-	case 2:
+	case 7:
 		color_algorithm = 1;
 		orbit_trap_function = 0;
 		orbit_point.set(1, 0);
 		descending_lightness = false;
 		break;
-	case 3:
+	case 8:
 		color_algorithm = 1;
 		orbit_trap_function = 0;
 		orbit_point.set(1, 0);
 		descending_lightness = true;
 		break;
-	case 4:
+	case 9:
 		color_algorithm = 1;
 		orbit_trap_function = 0;
 		orbit_point.set(-1, 0);
 		descending_lightness = true;
 		break;
-	case 5:
+	case 10:
 		color_algorithm = 1;
 		orbit_trap_function = 0;
 		orbit_point.set(cos(JuliaTime::sinceStart), sin(JuliaTime::sinceStart));
 		descending_lightness = true;
 		break;
-	case 6:
+	case 2:
 		color_algorithm = 1;
 		orbit_trap_function = 1;
 		orbit_circle_radius_squared = 1;
 		descending_lightness = true;
 		break;
-	case 7:
+	case 3:
 		color_algorithm = 1;
 		orbit_trap_function = 2;
 		descending_lightness = true;
 		break;
-	case 8:
+	case 4:
 		color_algorithm = 1;
 		orbit_trap_function = 3;
+		descending_lightness = true;
+		break;
+	case 5:
+		color_algorithm = 1;
+		orbit_trap_function = 4;
+		descending_lightness = true;
+		break;
+	case 6:
+		color_algorithm = 1;
+		orbit_trap_function = 5;
 		descending_lightness = true;
 		break;
 	}
@@ -285,6 +295,26 @@ inline unsigned int JuliaRenderer::calcColorOrbit(const Vec2& coords,
 			min_dist = min(min_dist, fabs(z.x));
 			break;
 		}
+		case 4: {
+			// distance from rectangle
+			double dx = max(max(orbit_rect_left - z.x, 0.0), z.x - orbit_rect_right);
+			double dy = max(max(orbit_rect_bottom - z.y, 0.0), z.y - orbit_rect_top);
+			min_dist = min(min_dist, dx*dx+dy*dy);
+			break;
+		}
+		case 5: {
+			// distance from rectangle
+			Vec2 zz;
+			zz.set(z.x - orbit_flower_p1.x, z.y - orbit_flower_p1.y);
+			min_dist = min(min_dist, fabs(zz.getLengthSquared() - orbit_flower_radius_squared));
+			zz.set(z.x - orbit_flower_p2.x, z.y - orbit_flower_p2.y);
+			min_dist = min(min_dist, fabs(zz.getLengthSquared() - orbit_flower_radius_squared));
+			zz.set(z.x - orbit_flower_p3.x, z.y - orbit_flower_p3.y);
+			min_dist = min(min_dist, fabs(zz.getLengthSquared() - orbit_flower_radius_squared));
+			zz.set(z.x - orbit_flower_p4.x, z.y - orbit_flower_p4.y);
+			min_dist = min(min_dist, fabs(zz.getLengthSquared() - orbit_flower_radius_squared));
+			break;
+		}
 		}
 		if (z_sqr.x + z_sqr.y > 4.0) {
 			inside = 0;
@@ -294,9 +324,17 @@ inline unsigned int JuliaRenderer::calcColorOrbit(const Vec2& coords,
 	if (inside)
 		return 0xFF000000;
 	min_dist = sqrt(min_dist);
-	//	min_dist *= (double)max_iterations;
-	//	min_dist /= 20.0;
-	double h = min_dist + JuliaTime::sinceStart * 0.025;
+
+/*	double r = 255 - 255.0 * min_dist;
+	double g = r;
+	double b = 128 * min_dist;
+	unsigned int r255 = min(255, max(0, (int)r));
+	unsigned int g255 = r255;
+	unsigned int b255 = min(255, max(0, (int)b));
+	return 0xFF000000u | (r255 << 16u) | (g255 << 8u) | b255; */
+
+
+	double h = min_dist * (double) (max_iterations) / (20.0) + JuliaTime::sinceStart * 0.025;
 	h = fmod(h, 1.0f);
 	float s = 1.0;
 	float l;
