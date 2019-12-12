@@ -22,6 +22,17 @@ public:
 	double orbit_circle_radius_squared = 1;
 	Vec2 orbit_point = Vec2(1, 0);
 
+	double orbit_rect_left = -0.5;
+	double orbit_rect_right = 0.5;
+	double orbit_rect_top = 0.5;
+	double orbit_rect_bottom = -0.5;
+
+	double orbit_flower_radius_squared = 0.5;
+	Vec2 orbit_flower_p1 = Vec2(1, 0);
+	Vec2 orbit_flower_p2 = Vec2(-1, 0);
+	Vec2 orbit_flower_p3 = Vec2(0, 1);
+	Vec2 orbit_flower_p4 = Vec2(0, -1);
+
 	JuliaRenderer();
 	void update();
 	void render(QImage& image, double scale_factor);
