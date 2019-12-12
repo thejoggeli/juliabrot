@@ -1,4 +1,4 @@
-# juliabrot #	{#mainpage}
+# juliabrot	{#mainpage}
 
-# level 1 header #
+# Julia-Set #
 Julia set project description.
