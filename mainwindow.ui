@@ -313,6 +313,31 @@
           </item>
           <item>
            <property name="text">
+            <string>Orbit Trap [C]</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Orbit Trap [X]</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Orbit Trap [Y]</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Orbit Trap [R]</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Orbit Trap [F]</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
             <string>Orbit Trap [P1]</string>
            </property>
           </item>
@@ -329,21 +354,6 @@
           <item>
            <property name="text">
             <string>Orbit Trap [P+]</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>Orbit Trap [C]</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>Orbit Trap [X]</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>Orbit Trap [Y]</string>
            </property>
           </item>
          </widget>
