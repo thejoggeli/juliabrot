@@ -3,11 +3,17 @@
 
 #include "vec2.h"
 
+//! \brief The Camera class
 class Camera
 {
  public:
+  //! \brief position variable with datatype vec2
   Vec2 position;
-  double zoom, rotation;
+  //! \brief zoom variable with type double
+  double zoom;
+  //! \brief zoom variable with type double
+  double rotation;
+  //! \brief Camera constructor
   Camera();
 };
 
