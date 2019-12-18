@@ -1,0 +1,227 @@
+\hypertarget{classMainWindow}{}\section{Main\+Window Class Reference}
+\label{classMainWindow}\index{Main\+Window@{Main\+Window}}
+
+
+The \hyperlink{classMainWindow}{Main\+Window} class Mainwindow include Qmainwindow.  
+
+
+
+
+{\ttfamily \#include $<$mainwindow.\+h$>$}
+
+
+
+Collaboration diagram for Main\+Window\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=318pt]{classMainWindow__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classMainWindow_a996c5a2b6f77944776856f08ec30858d}{Main\+Window} (Q\+Widget $\ast$parent=nullptr)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classMainWindow}{Main\+Window} default construct. \end{DoxyCompactList}\item 
+\hyperlink{classJuliaWidget}{Julia\+Widget} $\ast$ \hyperlink{classMainWindow_a7ee8a672f617c1eaa5a83b6db735e51b}{get\+Render\+Target} ()
+\begin{DoxyCompactList}\small\item\em get\+Render\+Target pointer refered to class \hyperlink{classJuliaWidget}{Julia\+Widget} \end{DoxyCompactList}\item 
+Q\+Label $\ast$ \hyperlink{classMainWindow_adc53673d5fb73e021c7bde51a3b32055}{get\+F\+PS} ()
+\begin{DoxyCompactList}\small\item\em get\+F\+PS pointer refered to class Q\+Label \end{DoxyCompactList}\item 
+int \hyperlink{classMainWindow_a60d21468b55f475cc6187e577f3237de}{get\+Value} ()
+\begin{DoxyCompactList}\small\item\em get\+Value constructor \end{DoxyCompactList}\item 
+double \hyperlink{classMainWindow_a53e364bc9d8029ce6cac0170985fca81}{get\+Imaginary} ()
+\begin{DoxyCompactList}\small\item\em get\+Imaginary constructor \end{DoxyCompactList}\item 
+double \hyperlink{classMainWindow_ac2e149fa1e1eacf3166c3fb6943a6623}{get\+Real} ()
+\begin{DoxyCompactList}\small\item\em get\+Real construct \end{DoxyCompactList}\item 
+int \hyperlink{classMainWindow_adfbd73af7cca6690ea0dc032d08770f2}{get\+Rendering\+Mode} ()
+\begin{DoxyCompactList}\small\item\em get\+Rendering\+Mode constructor \end{DoxyCompactList}\item 
+int \hyperlink{classMainWindow_ab882730b5ab7e570b52cddf7134a9e63}{get\+Color\+Mode} ()
+\begin{DoxyCompactList}\small\item\em get\+Color\+Mode constructor \end{DoxyCompactList}\item 
+void \hyperlink{classMainWindow_aadb538c3401816b2c6038696ca0f8628}{set\+Status\+Text} (Q\+String \&text)
+\begin{DoxyCompactList}\small\item\em set\+Status\+Text constructor \end{DoxyCompactList}\item 
+double \hyperlink{classMainWindow_a43d3aa3fbe5ea12500ad8933534a1424}{get\+Quality} ()
+\begin{DoxyCompactList}\small\item\em get\+Quality constructor \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classMainWindow_a5b02344e17f89741b0ae69cdf9e9fcd2}\label{classMainWindow_a5b02344e17f89741b0ae69cdf9e9fcd2}} 
+bool \hyperlink{classMainWindow_a5b02344e17f89741b0ae69cdf9e9fcd2}{resized} = false
+\begin{DoxyCompactList}\small\item\em resized bool param initialised as false \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classMainWindow_a089b453e1c44d35636f0b6f9d13605e3}\label{classMainWindow_a089b453e1c44d35636f0b6f9d13605e3}} 
+bool \hyperlink{classMainWindow_a089b453e1c44d35636f0b6f9d13605e3}{exit\+Requested} = false
+\begin{DoxyCompactList}\small\item\em exit\+Requested bool param initialised as false \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classMainWindow_ac2778f4adcf69a9a707ff1ba88ece3f6}\label{classMainWindow_ac2778f4adcf69a9a707ff1ba88ece3f6}} 
+\hyperlink{classJuliaRenderer}{Julia\+Renderer} $\ast$ \hyperlink{classMainWindow_ac2778f4adcf69a9a707ff1ba88ece3f6}{julia\+Renderer}
+\begin{DoxyCompactList}\small\item\em julia\+Renderer pointer with class \hyperlink{classJuliaRenderer}{Julia\+Renderer} \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classMainWindow_a2bb633e0547f37d75ba5ec77417b574f}{save\+Png} (int w, int h)
+\begin{DoxyCompactList}\small\item\em save\+Png constructor \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{classMainWindow}{Main\+Window} class Mainwindow include Qmainwindow. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classMainWindow_a996c5a2b6f77944776856f08ec30858d}\label{classMainWindow_a996c5a2b6f77944776856f08ec30858d}} 
+\index{Main\+Window@{Main\+Window}!Main\+Window@{Main\+Window}}
+\index{Main\+Window@{Main\+Window}!Main\+Window@{Main\+Window}}
+\subsubsection{\texorpdfstring{Main\+Window()}{MainWindow()}}
+{\footnotesize\ttfamily Main\+Window\+::\+Main\+Window (\begin{DoxyParamCaption}\item[{Q\+Widget $\ast$}]{parent = {\ttfamily nullptr} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+\hyperlink{classMainWindow}{Main\+Window} default construct. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent} & pointer as param \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classMainWindow_ab882730b5ab7e570b52cddf7134a9e63}\label{classMainWindow_ab882730b5ab7e570b52cddf7134a9e63}} 
+\index{Main\+Window@{Main\+Window}!get\+Color\+Mode@{get\+Color\+Mode}}
+\index{get\+Color\+Mode@{get\+Color\+Mode}!Main\+Window@{Main\+Window}}
+\subsubsection{\texorpdfstring{get\+Color\+Mode()}{getColorMode()}}
+{\footnotesize\ttfamily int Main\+Window\+::get\+Color\+Mode (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+get\+Color\+Mode constructor 
+
+\begin{DoxyReturn}{Returns}
+returning integer 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classMainWindow_adc53673d5fb73e021c7bde51a3b32055}\label{classMainWindow_adc53673d5fb73e021c7bde51a3b32055}} 
+\index{Main\+Window@{Main\+Window}!get\+F\+PS@{get\+F\+PS}}
+\index{get\+F\+PS@{get\+F\+PS}!Main\+Window@{Main\+Window}}
+\subsubsection{\texorpdfstring{get\+F\+P\+S()}{getFPS()}}
+{\footnotesize\ttfamily Q\+Label$\ast$ Main\+Window\+::get\+F\+PS (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+get\+F\+PS pointer refered to class Q\+Label 
+
+\begin{DoxyReturn}{Returns}
+type get\+F\+PS 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classMainWindow_a53e364bc9d8029ce6cac0170985fca81}\label{classMainWindow_a53e364bc9d8029ce6cac0170985fca81}} 
+\index{Main\+Window@{Main\+Window}!get\+Imaginary@{get\+Imaginary}}
+\index{get\+Imaginary@{get\+Imaginary}!Main\+Window@{Main\+Window}}
+\subsubsection{\texorpdfstring{get\+Imaginary()}{getImaginary()}}
+{\footnotesize\ttfamily double Main\+Window\+::get\+Imaginary (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+get\+Imaginary constructor 
+
+\begin{DoxyReturn}{Returns}
+returning double 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classMainWindow_a43d3aa3fbe5ea12500ad8933534a1424}\label{classMainWindow_a43d3aa3fbe5ea12500ad8933534a1424}} 
+\index{Main\+Window@{Main\+Window}!get\+Quality@{get\+Quality}}
+\index{get\+Quality@{get\+Quality}!Main\+Window@{Main\+Window}}
+\subsubsection{\texorpdfstring{get\+Quality()}{getQuality()}}
+{\footnotesize\ttfamily double Main\+Window\+::get\+Quality (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+get\+Quality constructor 
+
+\begin{DoxyReturn}{Returns}
+returning double 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classMainWindow_ac2e149fa1e1eacf3166c3fb6943a6623}\label{classMainWindow_ac2e149fa1e1eacf3166c3fb6943a6623}} 
+\index{Main\+Window@{Main\+Window}!get\+Real@{get\+Real}}
+\index{get\+Real@{get\+Real}!Main\+Window@{Main\+Window}}
+\subsubsection{\texorpdfstring{get\+Real()}{getReal()}}
+{\footnotesize\ttfamily double Main\+Window\+::get\+Real (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+get\+Real construct 
+
+\begin{DoxyReturn}{Returns}
+returning double 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classMainWindow_adfbd73af7cca6690ea0dc032d08770f2}\label{classMainWindow_adfbd73af7cca6690ea0dc032d08770f2}} 
+\index{Main\+Window@{Main\+Window}!get\+Rendering\+Mode@{get\+Rendering\+Mode}}
+\index{get\+Rendering\+Mode@{get\+Rendering\+Mode}!Main\+Window@{Main\+Window}}
+\subsubsection{\texorpdfstring{get\+Rendering\+Mode()}{getRenderingMode()}}
+{\footnotesize\ttfamily int Main\+Window\+::get\+Rendering\+Mode (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+get\+Rendering\+Mode constructor 
+
+\begin{DoxyReturn}{Returns}
+returning integer 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classMainWindow_a7ee8a672f617c1eaa5a83b6db735e51b}\label{classMainWindow_a7ee8a672f617c1eaa5a83b6db735e51b}} 
+\index{Main\+Window@{Main\+Window}!get\+Render\+Target@{get\+Render\+Target}}
+\index{get\+Render\+Target@{get\+Render\+Target}!Main\+Window@{Main\+Window}}
+\subsubsection{\texorpdfstring{get\+Render\+Target()}{getRenderTarget()}}
+{\footnotesize\ttfamily \hyperlink{classJuliaWidget}{Julia\+Widget} $\ast$ Main\+Window\+::get\+Render\+Target (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+get\+Render\+Target pointer refered to class \hyperlink{classJuliaWidget}{Julia\+Widget} 
+
+\begin{DoxyReturn}{Returns}
+type \hyperlink{classJuliaWidget}{Julia\+Widget} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classMainWindow_a60d21468b55f475cc6187e577f3237de}\label{classMainWindow_a60d21468b55f475cc6187e577f3237de}} 
+\index{Main\+Window@{Main\+Window}!get\+Value@{get\+Value}}
+\index{get\+Value@{get\+Value}!Main\+Window@{Main\+Window}}
+\subsubsection{\texorpdfstring{get\+Value()}{getValue()}}
+{\footnotesize\ttfamily int Main\+Window\+::get\+Value (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+get\+Value constructor 
+
+\begin{DoxyReturn}{Returns}
+returning integer 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classMainWindow_a2bb633e0547f37d75ba5ec77417b574f}\label{classMainWindow_a2bb633e0547f37d75ba5ec77417b574f}} 
+\index{Main\+Window@{Main\+Window}!save\+Png@{save\+Png}}
+\index{save\+Png@{save\+Png}!Main\+Window@{Main\+Window}}
+\subsubsection{\texorpdfstring{save\+Png()}{savePng()}}
+{\footnotesize\ttfamily void Main\+Window\+::save\+Png (\begin{DoxyParamCaption}\item[{int}]{w,  }\item[{int}]{h }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+save\+Png constructor 
+
+
+\begin{DoxyParams}{Parameters}
+{\em w} & integer param \\
+\hline
+{\em h} & integer param \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classMainWindow_aadb538c3401816b2c6038696ca0f8628}\label{classMainWindow_aadb538c3401816b2c6038696ca0f8628}} 
+\index{Main\+Window@{Main\+Window}!set\+Status\+Text@{set\+Status\+Text}}
+\index{set\+Status\+Text@{set\+Status\+Text}!Main\+Window@{Main\+Window}}
+\subsubsection{\texorpdfstring{set\+Status\+Text()}{setStatusText()}}
+{\footnotesize\ttfamily void Main\+Window\+::set\+Status\+Text (\begin{DoxyParamCaption}\item[{Q\+String \&}]{text }\end{DoxyParamCaption})}
+
+
+
+set\+Status\+Text constructor 
+
+
+\begin{DoxyParams}{Parameters}
+{\em text} & param defined as reference \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+mainwindow.\+h\item 
+mainwindow.\+cpp\end{DoxyCompactItemize}

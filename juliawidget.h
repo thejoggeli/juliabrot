@@ -2,27 +2,36 @@
 #define JULIAWIDGET_H
 
 #include <QWidget>
-
+/*!
+ * \brief The JuliaWidget class
+ */
 class JuliaWidget : public QWidget
 {
-	Q_OBJECT
-public:
-	explicit JuliaWidget(QWidget *parent = nullptr);
+  Q_OBJECT
+ public:
+  /*!
+   * \brief JuliaWidget
+   * \param parent
+   */
+  explicit JuliaWidget(QWidget* parent = nullptr);
 
-	//! set the image that gets renderer to the widget panel
-	//! \param image pointer to the image
-	void setImage(QImage* image);
+  //! set the image that gets renderer to the widget panel
+  //! \param image pointer to the image
+  void setImage(QImage* image);
 
-protected:
+ protected:
+  /*!
+   * \brief paintEvent
+   * \param event
+   */
+  void paintEvent(QPaintEvent* event);
 
-	void paintEvent(QPaintEvent *event);
+  //! the image to draw to the panel
+  QImage* image;
 
-	//! the image to draw to the panel
-	QImage* image;
+ signals:
 
-signals:
-
-public slots:
+ public slots:
 };
 
-#endif // JULIAWIDGET_H
+#endif  // JULIAWIDGET_H

@@ -1,0 +1,43 @@
+\hypertarget{classColorHsl}{}\section{Color\+Hsl Class Reference}
+\label{classColorHsl}\index{Color\+Hsl@{Color\+Hsl}}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static unsigned int \hyperlink{classColorHsl_ae9451e6216d6e40eb1d0754e580f4b01}{Get\+Rgb\+Uint32} (float h, float s, float l)
+\end{DoxyCompactItemize}
+\subsection*{Static Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classColorHsl_ae5ee64095d7aaebb01498de2180daa9f}\label{classColorHsl_ae5ee64095d7aaebb01498de2180daa9f}} 
+static float \hyperlink{classColorHsl_ae5ee64095d7aaebb01498de2180daa9f}{Hue\+To\+Rgb} (float p, float q, float t)
+\begin{DoxyCompactList}\small\item\em convert hue to rgb (used for hsl-\/2-\/rgb algorithm) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classColorHsl_a891b3f489be291ab418bffd0cc48f0ee}\label{classColorHsl_a891b3f489be291ab418bffd0cc48f0ee}} 
+static float \hyperlink{classColorHsl_a891b3f489be291ab418bffd0cc48f0ee}{Wrap\+Hue} (float hue)
+\begin{DoxyCompactList}\small\item\em wrap hue between 0 and 1 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classColorHsl_ae9451e6216d6e40eb1d0754e580f4b01}\label{classColorHsl_ae9451e6216d6e40eb1d0754e580f4b01}} 
+\index{Color\+Hsl@{Color\+Hsl}!Get\+Rgb\+Uint32@{Get\+Rgb\+Uint32}}
+\index{Get\+Rgb\+Uint32@{Get\+Rgb\+Uint32}!Color\+Hsl@{Color\+Hsl}}
+\subsubsection{\texorpdfstring{Get\+Rgb\+Uint32()}{GetRgbUint32()}}
+{\footnotesize\ttfamily unsigned int Color\+Hsl\+::\+Get\+Rgb\+Uint32 (\begin{DoxyParamCaption}\item[{float}]{h,  }\item[{float}]{s,  }\item[{float}]{l }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+convert color from H\+SL to 32-\/bit integer (e.\+g. yellow = 0x\+F\+F\+F\+F00) 
+\begin{DoxyParams}{Parameters}
+{\em h} & hue from 0 to 1 \\
+\hline
+{\em s} & saturation from 0 to 1 \\
+\hline
+{\em l} & lightness from 0 to 1 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+32-\/bit integer (e.\+g. yellow = 0x\+F\+F\+F\+F00) 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+colorhsl.\+h\item 
+colorhsl.\+cpp\end{DoxyCompactItemize}

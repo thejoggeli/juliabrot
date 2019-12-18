@@ -1,0 +1,73 @@
+\hypertarget{classJuliaRenderer}{}\section{Julia\+Renderer Class Reference}
+\label{classJuliaRenderer}\index{Julia\+Renderer@{Julia\+Renderer}}
+
+
+Collaboration diagram for Julia\+Renderer\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=270pt]{classJuliaRenderer__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classJuliaRenderer_a6fc0f5a07835264e53ba7dea9a6562a4}\label{classJuliaRenderer_a6fc0f5a07835264e53ba7dea9a6562a4}} 
+\hyperlink{classJuliaRenderer_a6fc0f5a07835264e53ba7dea9a6562a4}{Julia\+Renderer} ()
+\begin{DoxyCompactList}\small\item\em default constructor \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classJuliaRenderer_affd048fa174855e27db9453eda38d2ba}\label{classJuliaRenderer_affd048fa174855e27db9453eda38d2ba}} 
+void \hyperlink{classJuliaRenderer_affd048fa174855e27db9453eda38d2ba}{update} ()
+\begin{DoxyCompactList}\small\item\em update renderer updates camera position, colors, etc \end{DoxyCompactList}\item 
+void \hyperlink{classJuliaRenderer_a2231caba8e65e19eb3074670c96e705f}{render} (Q\+Image \&image, double scale\+\_\+factor)
+\begin{DoxyCompactList}\small\item\em render julia-\/set to image \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classJuliaRenderer_a273cae2c0c14f6bddc6196b46928d7bb}\label{classJuliaRenderer_a273cae2c0c14f6bddc6196b46928d7bb}} 
+\hyperlink{classCamera}{Camera} \hyperlink{classJuliaRenderer_a273cae2c0c14f6bddc6196b46928d7bb}{camera}
+\begin{DoxyCompactList}\small\item\em \hyperlink{classCamera}{Camera}, determines position, rotation and zoom of render. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classJuliaRenderer_a25369c5dcd4e85a6ee45413b46f59fef}\label{classJuliaRenderer_a25369c5dcd4e85a6ee45413b46f59fef}} 
+\hyperlink{classVec2}{Vec2} \hyperlink{classJuliaRenderer_a25369c5dcd4e85a6ee45413b46f59fef}{julia\+\_\+c} = \hyperlink{classVec2}{Vec2}(0, 0)
+\begin{DoxyCompactList}\small\item\em constant \textquotesingle{}c\textquotesingle{} for julia-\/set \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classJuliaRenderer_ab2fb36d542bb5e630826cbfdcdfa6d00}\label{classJuliaRenderer_ab2fb36d542bb5e630826cbfdcdfa6d00}} 
+int \hyperlink{classJuliaRenderer_ab2fb36d542bb5e630826cbfdcdfa6d00}{rendering\+\_\+mode} = 0
+\begin{DoxyCompactList}\small\item\em set to 0 julia-\/set, 1 for mandelbrot \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classJuliaRenderer_abf1c76861597558bd3b53d5f89c5d94e}\label{classJuliaRenderer_abf1c76861597558bd3b53d5f89c5d94e}} 
+int \hyperlink{classJuliaRenderer_abf1c76861597558bd3b53d5f89c5d94e}{max\+\_\+iterations} = 25
+\begin{DoxyCompactList}\small\item\em maximum number of iterations \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classJuliaRenderer_a9e2d7418901019e060bb8cc9e0e9982d}\label{classJuliaRenderer_a9e2d7418901019e060bb8cc9e0e9982d}} 
+int \hyperlink{classJuliaRenderer_a9e2d7418901019e060bb8cc9e0e9982d}{color\+\_\+mode} = 1
+\begin{DoxyCompactList}\small\item\em determines how the fractal gets colorized \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classJuliaRenderer_a21a8248c28cf0035a14ad1ef98761356}\label{classJuliaRenderer_a21a8248c28cf0035a14ad1ef98761356}} 
+bool {\bfseries event\+Filter} (Q\+Object $\ast$Obj, Q\+Event $\ast$event) override
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classJuliaRenderer_a2231caba8e65e19eb3074670c96e705f}\label{classJuliaRenderer_a2231caba8e65e19eb3074670c96e705f}} 
+\index{Julia\+Renderer@{Julia\+Renderer}!render@{render}}
+\index{render@{render}!Julia\+Renderer@{Julia\+Renderer}}
+\subsubsection{\texorpdfstring{render()}{render()}}
+{\footnotesize\ttfamily void Julia\+Renderer\+::render (\begin{DoxyParamCaption}\item[{Q\+Image \&}]{image,  }\item[{double}]{scale\+\_\+factor }\end{DoxyParamCaption})}
+
+
+
+render julia-\/set to image 
+
+
+\begin{DoxyParams}{Parameters}
+{\em image} & the image to render the julia-\/set to \\
+\hline
+{\em scale\+\_\+factor} & multiplicator for camera.\+zoom, used to keep zoom consistent for different quality settings \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+juliarenderer.\+h\item 
+juliarenderer.\+cpp\end{DoxyCompactItemize}
